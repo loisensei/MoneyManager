@@ -1,0 +1,73 @@
+.dark-background{
+    -fx-background-color: #2A2D36;
+}
+
+.button {
+    -fx-background-color: transparent;
+}
+.button:hover {
+    -fx-background-color: #4d4f54;
+    -fx-translate-y: -4px;
+    -fx-translate-z: -5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(236, 233, 233, 0.8), 10, 0, 0, 0);
+}
+.left-button {
+    -fx-background-color: transparent;
+}
+.left-button:hover{
+    -fx-background-color: #A0B0F3;
+    -fx-translate-x: -4;
+    -fx-translate-z: -4;
+    -fx-effect: dropshadow(three-pass-box, #A0B0F3, 10, 0, 0, 0);
+}
+.right-button {
+    -fx-background-color: transparent;
+}
+.right-button:hover{
+    -fx-background-color: #A0B0F3;
+    -fx-translate-x: 4;
+    -fx-translate-z: -4;
+    -fx-effect: dropshadow(three-pass-box, #A0B0F3, 10, 0, 0, 0);
+}
+.bottom{
+    -fx-border-width: 0 2 0 0;
+    -fx-border-color: #C4C4C4;
+}
+
+.pad-bottom{
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #c9582a;
+}
+
+.text-format{
+    -fx-text-fill: orange;
+    -fx-background-color: transparent;
+    -fx-border-color: orange;
+    -fx-border-width: 0 0 1 0;
+}
+.txt-field-blue{
+    -fx-text-fill: #0d5cf1;
+    -fx-background-color: transparent;
+    -fx-border-color: #067ef6;
+    -fx-border-width: 0 0 1 0;
+}
+.delete-btn{
+    -fx-background-color: transparent;
+}
+.delete-btn:hover{
+    -fx-background-color: #C3C3C2;
+}
+.change-promptText{
+    -fx-prompt-text-fill: #0f83e8;
+
+}
+
+.combo-box .text-field {
+    -fx-prompt-text-fill: rgba(255, 0, 0, 0.5) ;
+}
+.tap-pane{
+    -fx-background-color: transparent;
+}
+.tap{
+    -fx-tick-label-fill: red;
+}

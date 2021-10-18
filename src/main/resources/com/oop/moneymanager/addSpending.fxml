@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="353.0" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.spendingmanagement.Daily.ADD.Add">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/styles.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Thu">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane layoutX="77.0" layoutY="121.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label layoutX="48.0" layoutY="23.0" text="Ngày">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker layoutX="88.0" layoutY="20.0" prefHeight="25.0" prefWidth="200.0" />
+                              <Label layoutX="32.0" layoutY="66.0" text="Thể loại">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <JFXComboBox layoutX="88.0" layoutY="63.0" prefHeight="25.0" prefWidth="201.0" />
+                              <Label layoutX="32.0" layoutY="123.0" text="Thể loại">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="88.0" layoutY="120.0" prefHeight="25.0" prefWidth="203.0" styleClass="txt-field-blue" />
+                              <Label layoutX="32.0" layoutY="173.0" text="Số tiền">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="88.0" layoutY="170.0" prefHeight="25.0" prefWidth="203.0" styleClass="txt-field-blue" />
+                              <Label layoutX="32.0" layoutY="230.0" text="Ghi chú">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextArea layoutX="88.0" layoutY="230.0" prefHeight="99.0" prefWidth="204.0" styleClass="txt-field-blue" />
+                              <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="292.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                                 <image>
+                                    <Image url="@../../../img/pencil_32px.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXButton layoutX="85.0" layoutY="359.0" prefHeight="31.0" prefWidth="207.0" ripplerFill="#1c64c9" style="-fx-background-color: #02ADFF;" text="Thêm" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Chi">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@../../../css/styles.css">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label layoutX="48.0" layoutY="23.0" text="Ngày">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker layoutX="88.0" layoutY="20.0" prefHeight="25.0" prefWidth="200.0" />
+                              <Label layoutX="32.0" layoutY="66.0" text="Thể loại">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <JFXComboBox layoutX="88.0" layoutY="63.0" prefHeight="25.0" prefWidth="201.0" />
+                              <Label layoutX="32.0" layoutY="123.0" text="Thể loại">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="88.0" layoutY="120.0" prefHeight="25.0" prefWidth="203.0" styleClass="text-format" />
+                              <Label layoutX="32.0" layoutY="173.0" text="Số tiền">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="88.0" layoutY="170.0" prefHeight="25.0" prefWidth="203.0" styleClass="text-format" />
+                              <Label layoutX="32.0" layoutY="230.0" text="Ghi chú">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextArea layoutX="88.0" layoutY="230.0" prefHeight="99.0" prefWidth="204.0" styleClass="text-format" />
+                              <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="292.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                                 <image>
+                                    <Image url="@../../../img/pencil_32px.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXButton layoutX="85.0" layoutY="359.0" prefHeight="31.0" prefWidth="207.0" ripplerFill="#1c64c9" style="-fx-background-color: #FD5200;" text="Thêm" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>

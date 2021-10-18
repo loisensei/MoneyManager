@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.spendingmanagement.Controller.StatisticsController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="168.0" layoutY="187.0" prefHeight="178.0" prefWidth="414.0" text="Thống Kê" textAlignment="CENTER" textFill="#0e12d9">
+         <font>
+            <Font name="System Bold" size="64.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
