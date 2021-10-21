@@ -14,4 +14,12 @@ public class AccountController {
     public List<Account> getListAccount(){
         return this.accountDAO.getAll();
     }
+
+    public boolean isExist(String name){
+        return accountDAO.isExist(name);
+    }
+
+    public void insert(Account account){
+        accountDAO.save(account);
+    }
 }

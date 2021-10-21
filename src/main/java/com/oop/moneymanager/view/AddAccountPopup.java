@@ -1,6 +1,7 @@
 package com.oop.moneymanager.view;
 
 import com.oop.moneymanager.controller.AccountController;
+import com.oop.moneymanager.model.Account;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,8 +28,15 @@ public class AddAccountPopup extends BaseView{
     @FXML
     void onBtnAddAccountClick(ActionEvent event) {
         HomeScene hs = (HomeScene) this.getParam("parent");
-        hs.test();
         AccountController ac = (AccountController) this.getParam("accountController");
+        if(ac.isExist(txtAccountName.getText())){
+            lbMesseger.setText("Account already exists!");
+        }else{
+            Account account = new Account(txtAccountName.getText(),Integer.parseInt(txtBalance.getText()));
+            ac.insert(account);
+            hs.initListAccount();
+        }
+
     }
 
     @Override

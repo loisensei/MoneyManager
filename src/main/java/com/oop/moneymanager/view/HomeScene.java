@@ -32,6 +32,7 @@ public class HomeScene extends BaseView {
     void addAccount(MouseEvent event) {
         AddAccountPopup addAccountPopup = (AddAccountPopup)GuiUtils.openPopup(this,"AddAccountPopup");
         addAccountPopup.setParams("accountController",this.accountController);
+
     }
 
     @FXML
@@ -51,7 +52,8 @@ public class HomeScene extends BaseView {
 
     @FXML
     void onSelectAccount(ActionEvent event) {
-
+        Account account = cbListAccount.getValue();
+        lbBalance.setText(account.getBalance().toString());
     }
 
     @Override
@@ -60,12 +62,10 @@ public class HomeScene extends BaseView {
         this.initListAccount();
     }
 
-    private void initListAccount(){
+    public void initListAccount(){
         ObservableList<Account> list = FXCollections.observableList(this.accountController.getListAccount());
         cbListAccount.setItems(list);
     }
 
-    public void test(){
-        System.out.println("sjfoejfje");
-    }
+
 }

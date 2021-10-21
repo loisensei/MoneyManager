@@ -5,6 +5,7 @@ import com.oop.moneymanager.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import javax.persistence.Query;
 import java.util.List;
 
 public class AccountDAO implements IAccountDAO{
@@ -15,7 +16,11 @@ public class AccountDAO implements IAccountDAO{
 
     @Override
     public Boolean isExist(String accountName) {
-        return null;
+        Session session = this.sessionFactory.openSession();
+        session.beginTransaction();
+        String hql = "select A.name from Account A where A.name = '"+ accountName+"'";
+        Query query = session.createQuery(hql);
+        return !query.getResultList().isEmpty();
     }
 
     @Override
