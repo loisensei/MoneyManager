@@ -2,8 +2,11 @@ package com.oop.moneymanager.utils;
 
 import com.oop.moneymanager.view.BaseView;
 import com.oop.moneymanager.view.HomeScene;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -28,5 +31,17 @@ public class GuiUtils {
         BaseView popupController = fxmlLoader.getController();
         popupController.setParams("parent",parent);
         return popupController;
+    }
+
+    public static void addNumericInputListener(TextField tf){
+        tf.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    tf.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
 }

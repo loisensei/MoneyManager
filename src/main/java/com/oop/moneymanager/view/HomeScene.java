@@ -32,7 +32,6 @@ public class HomeScene extends BaseView {
     void addAccount(MouseEvent event) {
         AddAccountPopup addAccountPopup = (AddAccountPopup)GuiUtils.openPopup(this,"AddAccountPopup");
         addAccountPopup.setParams("accountController",this.accountController);
-
     }
 
     @FXML
@@ -64,6 +63,7 @@ public class HomeScene extends BaseView {
 
     public void initListAccount(){
         ObservableList<Account> list = FXCollections.observableList(this.accountController.getListAccount());
+        cbListAccount.getItems().clear();
         cbListAccount.setItems(list);
     }
 
