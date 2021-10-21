@@ -42,7 +42,10 @@ public class AccountDAO implements IAccountDAO{
 
     @Override
     public void update(Account account) {
-
+        Session session = this.sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(account);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -52,6 +55,9 @@ public class AccountDAO implements IAccountDAO{
 
     @Override
     public void delete(Account account) {
-
+        Session session = this.sessionFactory.openSession();
+        session.beginTransaction();
+        session.delete(account);
+        session.getTransaction().commit();
     }
 }

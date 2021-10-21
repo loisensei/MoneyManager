@@ -37,7 +37,7 @@
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
-                           <ImageView fitHeight="29.0" fitWidth="30.0" onMouseClicked="#addAccount" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                           <ImageView fitHeight="29.0" fitWidth="30.0" onMouseClicked="#onBtnAddAccountClick" pickOnBounds="true" preserveRatio="true" styleClass="button">
                               <Image url="@../../../../img/addd.png" />
                            </ImageView>
                         </VBox>

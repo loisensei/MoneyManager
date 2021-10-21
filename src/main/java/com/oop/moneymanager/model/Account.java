@@ -15,14 +15,12 @@ public class Account{
     @Column
     private Integer balance;
 
-    public Account(String name, int balance) {
+    public Account(String name, Integer balance) {
         this.name = name;
         this.balance = balance;
     }
 
-    public Account() {
-
-    }
+    public Account() {}
 
     public String getName() {
         return name;
@@ -43,5 +41,12 @@ public class Account{
     @Override
     public String toString() {
         return name;
+    }
+
+    public boolean equals(Object o) {
+        if (o instanceof Account account){
+            return account.getId().equals(this.getId());
+        }
+        return false;
     }
 }

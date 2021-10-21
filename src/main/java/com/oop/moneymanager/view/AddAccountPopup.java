@@ -3,6 +3,7 @@ package com.oop.moneymanager.view;
 import com.oop.moneymanager.controller.AccountController;
 import com.oop.moneymanager.model.Account;
 import com.oop.moneymanager.utils.GuiUtils;
+import com.oop.moneymanager.utils.StringUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -35,10 +36,9 @@ public class AddAccountPopup extends BaseView{
         if(ac.isExist(txtAccountName.getText())){
             lbMesseger.setText("Account already exists!");
         }else{
-            Account account = new Account(txtAccountName.getText(),Integer.parseInt(txtBalance.getText()));
             if(isValidInput()) {
-                ac.insert(account);
-                hs.initListAccount();
+                Account account = new Account(txtAccountName.getText().trim(),Integer.parseInt(txtBalance.getText()));
+                hs.onAddNewAccount(account);
                 closeScene(event);
             }else{
                 lbMesseger.setText("Error!");
@@ -48,10 +48,7 @@ public class AddAccountPopup extends BaseView{
     }
 
     Boolean isValidInput(){
-        if(txtAccountName.getText() == null){
-            return false;
-        }
-        return txtBalance.getText() != null;
+        return StringUtils.isValidAccountName(txtAccountName.getText()) && StringUtils.isValidBalance(txtBalance.getText());
     }
 
     @Override

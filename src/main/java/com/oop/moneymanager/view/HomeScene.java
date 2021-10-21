@@ -29,7 +29,7 @@ public class HomeScene extends BaseView {
     private AnchorPane panelView;
 
     @FXML
-    void addAccount(MouseEvent event) {
+    void onBtnAddAccountClick(MouseEvent event) {
         AddAccountPopup addAccountPopup = (AddAccountPopup)GuiUtils.openPopup(this,"AddAccountPopup");
         addAccountPopup.setParams("accountController",this.accountController);
     }
@@ -51,8 +51,11 @@ public class HomeScene extends BaseView {
 
     @FXML
     void onSelectAccount(ActionEvent event) {
-        Account account = cbListAccount.getValue();
-        lbBalance.setText(account.getBalance().toString());
+        if(cbListAccount.getValue() != null) {
+            Account account = cbListAccount.getValue();
+
+            lbBalance.setText(account.getBalance().toString());
+        }
     }
 
     @Override
@@ -67,5 +70,11 @@ public class HomeScene extends BaseView {
         cbListAccount.setItems(list);
     }
 
+    public void onAddNewAccount(Account account){
+        this.accountController.insert(account);
+        this.initListAccount();
+        int index = this.cbListAccount.getItems().indexOf(account);
+        this.cbListAccount.getSelectionModel().select(index);
+    }
 
 }
