@@ -28,6 +28,7 @@
 
         <!-- Entity mapping -->
         <mapping class="com.oop.moneymanager.model.Account" />
+        <mapping class="com.oop.moneymanager.model.Category" />
 
     </session-factory>
 </hibernate-configuration>

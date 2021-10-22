@@ -1,66 +1,63 @@
 package com.oop.moneymanager.model.dao;
 
-import com.oop.moneymanager.model.Account;
+import com.oop.moneymanager.model.Category;
 import com.oop.moneymanager.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
-public class AccountDAO implements IAccountDAO{
+public class CategoryDAO implements ICategoryDAO{
     private SessionFactory sessionFactory;
-    public AccountDAO(){
+    public CategoryDAO(){
         this.sessionFactory = HibernateUtils.getConnection();
     }
-
     @Override
-    public Boolean isExist(String accountName) {
+    public List<Category> getAll() {
         Session session = this.sessionFactory.openSession();
         session.beginTransaction();
-        String hql = "select A.name from Account A where A.name = '"+ accountName+"'";
-        Query query = session.createQuery(hql);
-        return !query.getResultList().isEmpty();
-    }
-
-    @Override
-    public List<Account> getAll() {
-        Session session = this.sessionFactory.openSession();
-        session.beginTransaction();
-        List<Account> list = session.createQuery("FROM Account",Account.class).list();
+        List<Category> categories = session.createQuery("FROM Category ",Category.class).list();
         session.close();
-        return list;
+        return categories;
     }
 
     @Override
-    public void save(Account account) {
+    public void save(Category category) {
         Session session = this.sessionFactory.openSession();
         session.beginTransaction();
-        session.save(account);
+        session.save(category);
         session.getTransaction().commit();
         session.close();
     }
 
     @Override
-    public void update(Account account) {
+    public void update(Category category) {
         Session session = this.sessionFactory.openSession();
         session.beginTransaction();
-        session.update(account);
+        session.update(category);
         session.getTransaction().commit();
         session.close();
     }
 
     @Override
-    public void add(Account account) {
+    public void add(Category category) {
 
     }
 
     @Override
-    public void delete(Account account) {
+    public void delete(Category category) {
         Session session = this.sessionFactory.openSession();
         session.beginTransaction();
-        session.delete(account);
+        session.delete(category);
         session.getTransaction().commit();
         session.close();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        Session session = this.sessionFactory.openSession();
+        session.beginTransaction();
+        return session.createQuery("FROM Category ",Category.class).list().isEmpty();
     }
 }
