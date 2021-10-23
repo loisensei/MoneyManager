@@ -3,6 +3,8 @@ package com.oop.moneymanager.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Data
 @Table
 @Entity
@@ -16,6 +18,9 @@ public class Category {
 
     @Column
     private String type;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<Statistic> statistics;
 
     public Category(String name, String type) {
         this.name = name;
@@ -38,6 +43,10 @@ public class Category {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<Statistic> getStatistics() {
+        return this.statistics;
     }
 
     @Override

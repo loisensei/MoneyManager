@@ -3,6 +3,8 @@ package com.oop.moneymanager.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Data
 @Table
 @Entity
@@ -14,6 +16,10 @@ public class Account{
     private String name;
     @Column
     private Integer balance;
+
+    @OneToMany(mappedBy = "account",cascade = CascadeType.ALL)
+    private List<Statistic> statistics;
+
 
     public Account(String name, Integer balance) {
         this.name = name;
@@ -36,6 +42,10 @@ public class Account{
 
     public void setBalance(Integer balance) {
         this.balance = balance;
+    }
+
+    public List<Statistic> getStatistics() {
+        return this.statistics;
     }
 
     @Override
