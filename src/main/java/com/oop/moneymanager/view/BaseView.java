@@ -30,14 +30,5 @@ public abstract class BaseView implements Initializable {
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
     }
-    public Object setPane(Pane paneName, String sourceName){
-        paneName.getChildren().clear();
-        FXMLLoader fxmlLoader = new FXMLLoader(HomeScene.class.getResource(sourceName+".fxml"));
-        try {
-            paneName.getChildren().add(fxmlLoader.load());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return fxmlLoader.getController();
-    }
+
 }

@@ -7,6 +7,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -32,7 +33,19 @@ public class GuiUtils {
         popupController.setParams("parent",parent);
         return popupController;
     }
+    public static Object setPane(Pane paneName, String sourceName){
+        paneName.getChildren().clear();
+        FXMLLoader fxmlLoader = new FXMLLoader(HomeScene.class.getResource(sourceName+".fxml"));
+        try {
+            paneName.getChildren().add(fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        BaseView popupController = fxmlLoader.getController();
+        popupController.setParams("parent",paneName.getParent());
+        return popupController;
+    }
     public static void addNumericInputListener(TextField tf){
         tf.textProperty().addListener(new ChangeListener<String>() {
             @Override

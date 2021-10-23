@@ -35,7 +35,7 @@ public class HomeScene extends BaseView {
 
     @FXML
     void onBtnDailyClick(MouseEvent event) {
-        AddDailyPopup addDailyPopup = (AddDailyPopup) setPane(panelView,"AddDailyPopup");
+        AddDailyPopup addDailyPopup = (AddDailyPopup) GuiUtils.setPane(panelView,"AddDailyPopup");
         addDailyPopup.setParams("accountController",this.accountController);
     }
 
@@ -46,7 +46,7 @@ public class HomeScene extends BaseView {
 
     @FXML
     void onBtnStatsClick(MouseEvent event) {
-        AddStatisticsPopup addStatisticsPopup = (AddStatisticsPopup) setPane(panelView,"AddStatisticsPopup");
+        AddStatisticsPopup addStatisticsPopup = (AddStatisticsPopup) GuiUtils.setPane(panelView,"AddStatisticsPopup");
         addStatisticsPopup.setParams("accountController",this.accountController);
     }
 

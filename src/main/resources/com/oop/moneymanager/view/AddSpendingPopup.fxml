@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="353.0" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.spendingmanagement.Daily.ADD.Add">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="353.0" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.AddSpendingPopup">
    <center>
-      <TabPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/styles.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../../css/styles.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab text="Thu">
             <content>
@@ -58,7 +58,7 @@
                               <TextArea layoutX="88.0" layoutY="230.0" prefHeight="99.0" prefWidth="204.0" styleClass="txt-field-blue" />
                               <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="292.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
                                  <image>
-                                    <Image url="@../../../img/pencil_32px.png" />
+                                    <Image url="@../../../../img/pencil_32px.png" />
                                  </image>
                               </ImageView>
                               <JFXButton layoutX="85.0" layoutY="359.0" prefHeight="31.0" prefWidth="207.0" ripplerFill="#1c64c9" style="-fx-background-color: #02ADFF;" text="Thêm" textFill="WHITE">
@@ -74,7 +74,7 @@
           </Tab>
           <Tab text="Chi">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@../../../css/styles.css">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@../../../../css/styles.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -113,7 +113,7 @@
                               <TextArea layoutX="88.0" layoutY="230.0" prefHeight="99.0" prefWidth="204.0" styleClass="text-format" />
                               <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="292.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
                                  <image>
-                                    <Image url="@../../../img/pencil_32px.png" />
+                                    <Image url="@../../../../img/pencil_32px.png" />
                                  </image>
                               </ImageView>
                               <JFXButton layoutX="85.0" layoutY="359.0" prefHeight="31.0" prefWidth="207.0" ripplerFill="#1c64c9" style="-fx-background-color: #FD5200;" text="Thêm" textFill="WHITE">
