@@ -1,6 +1,8 @@
 package com.oop.moneymanager.view;
 
 import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddDailyPopup extends BaseView implements Initializable {
+    private final ObservableList<String> listKindOfTime = FXCollections.observableArrayList();
     @FXML
     private JFXComboBox<String> cbKindOfTime;
 
@@ -45,6 +48,8 @@ public class AddDailyPopup extends BaseView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        listKindOfTime.addAll("Day","Month","Year");
+        cbKindOfTime.setItems(listKindOfTime);
 
     }
 }
