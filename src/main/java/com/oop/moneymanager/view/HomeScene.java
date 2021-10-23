@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -36,17 +35,17 @@ public class HomeScene extends BaseView {
 
     @FXML
     void onBtnDailyClick(MouseEvent event) {
-
+        setPane(panelView,"AddDailyPopup");
     }
 
     @FXML
     void onBtnExitClick(MouseEvent event) {
-
+        closeScene(event);
     }
 
     @FXML
     void onBtnStatsClick(MouseEvent event) {
-
+        setPane(panelView,"AddStatisticsPopup");
     }
 
     @FXML

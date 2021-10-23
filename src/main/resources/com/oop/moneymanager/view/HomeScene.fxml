@@ -44,7 +44,7 @@
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="26.0" prefWidth="178.0">
-                     <JFXComboBox fx:id="cbListAccount" focusColor="#b8caf2" onAction="#onSelectAccount" prefHeight="29.0" prefWidth="151.0" promptText="choose account" style="-fx-background-color: #A0B0F3;" styleClass="change-promptText" stylesheets="@../../../../css/styles.css" visibleRowCount="5">
+                     <JFXComboBox fx:id="cbListAccount" focusColor="#b8caf2" onAction="#onSelectAccount" prefHeight="29.0" prefWidth="151.0" promptText="choose account" style="-fx-background-color: #A0B0F3;" styleClass="change-promptText" stylesheets="@../../../../css/styles.css" visibleRowCount="4">
                         <HBox.margin>
                            <Insets />
                         </HBox.margin>
