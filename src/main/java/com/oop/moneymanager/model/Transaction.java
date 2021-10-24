@@ -29,12 +29,12 @@ public class Transaction {
     private Date time;
 
     @Column
-    private String notes;
+    private String note;
 
     public Transaction(Integer numberOfMoney, Date time, String notes) {
         this.amount = numberOfMoney;
         this.time = time;
-        this.notes = notes;
+        this.note = notes;
     }
     public Transaction(){}
 

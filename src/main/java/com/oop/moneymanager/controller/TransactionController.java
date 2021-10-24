@@ -12,16 +12,16 @@ public class TransactionController {
     public TransactionController(Account account){
         this.accountController = new AccountController();
         this.transactionDAO = new TransactionDAO();
-        this.setAccountId(account);
+        this.setAccount(account);
 
     }
 
-    public void setAccountId(Account account){
+    public void setAccount(Account account){
         this.account = account;
     }
-    public void add(Transaction statistic){
-        statistic.setAccount(this.account);
-        transactionDAO.save(statistic);
+    public void add(Transaction transaction){
+        transaction.setAccount(this.account);
+        transactionDAO.save(transaction);
     }
 
 }

@@ -39,7 +39,7 @@
                      <Insets />
                   </HBox.margin>
                </HBox>
-               <HBox alignment="CENTER" onMouseClicked="#onClickAddStatistic" prefHeight="27.0" prefWidth="172.0" styleClass="button" stylesheets="@../../../../css/styles.css">
+               <HBox alignment="CENTER" onMouseClicked="#onAddTransactionClick" prefHeight="27.0" prefWidth="172.0" styleClass="button" stylesheets="@../../../../css/styles.css">
                   <children>
                      <ImageView fitHeight="41.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                         <image>

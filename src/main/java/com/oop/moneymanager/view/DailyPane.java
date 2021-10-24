@@ -2,6 +2,9 @@ package com.oop.moneymanager.view;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.oop.moneymanager.controller.AccountController;
+import com.oop.moneymanager.controller.TransactionController;
+import com.oop.moneymanager.model.Account;
+import com.oop.moneymanager.model.Transaction;
 import com.oop.moneymanager.utils.GuiUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,13 +18,9 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DailyPane extends BaseView{
+public class DailyPane extends BasePane{
     private AccountController accountController;
-    private HomeScene homeScene;
-    public DailyPane(){
-        this.homeScene = (HomeScene) this.getParam("parent");
-        this.accountController = (AccountController) this.getParam("accountController");
-    }
+    private TransactionController transactionController;
     private final ObservableList<String> listKindOfTime = FXCollections.observableArrayList();
     @FXML
     private JFXComboBox<String> cbKindOfTime;
@@ -38,9 +37,13 @@ public class DailyPane extends BaseView{
     }
 
     @FXML
-    void onClickAddStatistic(MouseEvent event) {
+    void onAddTransactionClick(MouseEvent event) {
         InputTransactionPopup addSpendingPopup = (InputTransactionPopup) GuiUtils.openPopup(this,"AddSpendingPopup");
-        addSpendingPopup.setParams("accountController",this.accountController);
+    }
+
+    @FXML
+    void onClickBackward(MouseEvent event) {
+
     }
 
     @FXML
@@ -48,16 +51,25 @@ public class DailyPane extends BaseView{
 
     }
 
-    @FXML
-    void onClickBackward(MouseEvent event) {
-
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.homeScene = (HomeScene) this.getParam("parent");
+        this.accountController = (AccountController) this.getParam("accountController");
+        listKindOfTime.addAll("Day","Month","Year");
+        cbKindOfTime.setItems(listKindOfTime);
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        listKindOfTime.addAll("Day","Month","Year");
-        cbKindOfTime.setItems(listKindOfTime);
+    public void reload(Account account){
+        if(this.transactionController==null) {
+            this.transactionController = new TransactionController(account);
+        }else {
+            transactionController.setAccount(account);
+        }
+    }
 
+    public void onAddTransaction(Transaction transaction){
+        transactionController.add(transaction);
+        homeScene.updateBalance();
     }
 }

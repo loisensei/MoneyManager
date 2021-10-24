@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="450.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.InputTransactionPopup">
    <children>
       <JFXButton fx:id="btnIncome" layoutX="10.0" layoutY="21.0" onAction="#onBtnIncomeClick" prefHeight="25.0" prefWidth="170.0" text="Thu" textFill="#232323">
@@ -29,7 +28,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dpTime" layoutX="82.0" layoutY="70.0" prefHeight="25.0" prefWidth="200.0" />
+      <DatePicker fx:id="dpTime" editable="false" layoutX="82.0" layoutY="70.0" prefHeight="25.0" prefWidth="200.0" />
       <Label layoutX="26.0" layoutY="120.0" text="Thể loại">
          <font>
             <Font size="14.0" />
@@ -58,5 +57,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
+      <Label fx:id="lbWarningCategory" layoutX="82.0" layoutY="101.0" text="Chọn thể loại" textFill="#e70a0a" visible="false" />
+      <Label fx:id="lbWarningAmount" layoutX="83.0" layoutY="157.0" text="Nhập số tiền" textFill="#e70a0a" visible="false" />
    </children>
 </AnchorPane>
