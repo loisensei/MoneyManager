@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class AddSpendingPopup extends BaseView {
+public class InputTransactionPopup extends BaseView {
     private CategoryController categoryController;
     @FXML
     private JFXButton btnAdd;

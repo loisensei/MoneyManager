@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -40,7 +39,7 @@ public class DailyPane extends BaseView{
 
     @FXML
     void onClickAddStatistic(MouseEvent event) {
-        AddSpendingPopup addSpendingPopup = (AddSpendingPopup) GuiUtils.openPopup(this,"AddSpendingPopup");
+        InputTransactionPopup addSpendingPopup = (InputTransactionPopup) GuiUtils.openPopup(this,"AddSpendingPopup");
         addSpendingPopup.setParams("accountController",this.accountController);
     }
 

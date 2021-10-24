@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="450.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.AddSpendingPopup">
+<AnchorPane prefHeight="450.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.InputTransactionPopup">
    <children>
       <JFXButton fx:id="btnIncome" layoutX="10.0" layoutY="21.0" onAction="#onBtnIncomeClick" prefHeight="25.0" prefWidth="170.0" text="Thu" textFill="#232323">
          <font>
