@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.InputTransactionPopup">
+<AnchorPane prefHeight="450.0" prefWidth="360.0" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.InputTransactionPopup">
    <children>
       <JFXButton fx:id="btnIncome" layoutX="10.0" layoutY="21.0" onAction="#onBtnIncomeClick" prefHeight="25.0" prefWidth="170.0" text="Thu" textFill="#232323">
          <font>
@@ -47,7 +47,7 @@
          </font>
       </Label>
       <TextArea fx:id="txtNote" layoutX="82.0" layoutY="237.0" prefHeight="99.0" prefWidth="204.0" styleClass="txt-field-blue" />
-      <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="286.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
+      <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="286.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" styleClass="pen-button">
          <image>
             <Image url="@../../../../img/pencil_32px.png" />
          </image>

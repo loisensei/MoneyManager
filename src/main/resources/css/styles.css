@@ -11,6 +11,14 @@
     -fx-translate-z: -5px;
     -fx-effect: dropshadow(three-pass-box, rgba(236, 233, 233, 0.8), 10, 0, 0, 0);
 }
+.pen-button {
+    -fx-background-color:transparent;
+}
+.pen-button:hover{
+    -fx-translate-z: 10;
+    -fx-translate-x: -4;
+    -fx-effect: dropshadow(three-pass-box, #4d4f54, 5, 0, 0, 0);
+}
 .left-button {
     -fx-background-color: transparent;
 }

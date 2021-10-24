@@ -4,6 +4,7 @@ import com.oop.moneymanager.model.Category;
 import com.oop.moneymanager.model.dao.ICategoryDAO;
 import com.oop.moneymanager.model.dao.MysqlImp.CategoryDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryController {
@@ -12,7 +13,12 @@ public class CategoryController {
         this.categoryDAO = new CategoryDAO();
     }
     public List<Category> getByType(Integer type){
-        return categoryDAO.getByType(type);
+        List<Category> list = categoryDAO.getByType(type);
+        List<Category> result = new ArrayList<>();
+        for(Category c: list){
+            if (c.isVisible) result.add(c);
+        }
+        return result;
     }
 
 }
