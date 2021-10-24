@@ -1,6 +1,7 @@
-package com.oop.moneymanager.model.dao;
+package com.oop.moneymanager.model.dao.MysqlImp;
 
 import com.oop.moneymanager.model.Category;
+import com.oop.moneymanager.model.dao.ICategoryDAO;
 import com.oop.moneymanager.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,7 +9,7 @@ import org.hibernate.SessionFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryDAO implements ICategoryDAO{
+public class CategoryDAO implements ICategoryDAO {
     private SessionFactory sessionFactory;
     public CategoryDAO(){
         this.sessionFactory = HibernateUtils.getConnection();
@@ -41,11 +42,6 @@ public class CategoryDAO implements ICategoryDAO{
     }
 
     @Override
-    public void add(Category category) {
-
-    }
-
-    @Override
     public void delete(Category category) {
         Session session = this.sessionFactory.openSession();
         session.beginTransaction();
@@ -58,6 +54,17 @@ public class CategoryDAO implements ICategoryDAO{
     public boolean isEmpty() {
         Session session = this.sessionFactory.openSession();
         session.beginTransaction();
-        return session.createQuery("FROM Category ",Category.class).list().isEmpty();
+        List<Category> list = session.createQuery("FROM Category ",Category.class).list();
+        session.close();
+        return list.isEmpty();
+    }
+
+    @Override
+    public List<Category> getByType(Integer type) {
+        Session session = this.sessionFactory.openSession();
+        session.beginTransaction();
+        List<Category> list = session.createQuery("FROM Category where type = "+type.toString(),Category.class).list();
+        session.close();
+        return list;
     }
 }

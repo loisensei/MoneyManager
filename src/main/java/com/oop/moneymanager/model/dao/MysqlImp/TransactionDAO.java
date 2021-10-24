@@ -1,28 +1,29 @@
-package com.oop.moneymanager.model.dao;
+package com.oop.moneymanager.model.dao.MysqlImp;
 
-import com.oop.moneymanager.model.Statistic;
+import com.oop.moneymanager.model.Transaction;
+import com.oop.moneymanager.model.dao.ITransactionDAO;
 import com.oop.moneymanager.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class StatisticDAO implements IStatisticDAO{
+public class TransactionDAO implements ITransactionDAO {
     private SessionFactory sessionFactory;
-    public StatisticDAO(){
+    public TransactionDAO(){
         this.sessionFactory = HibernateUtils.getConnection();
     }
     @Override
-    public List<Statistic> getAll() {
+    public List<Transaction> getAll() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<Statistic> statistics = session.createQuery("FROM Statistic ",Statistic.class).list();
+        List<Transaction> statistics = session.createQuery("FROM Transaction ", Transaction.class).list();
         session.close();
         return statistics;
     }
 
     @Override
-    public void save(Statistic statistic) {
+    public void save(Transaction statistic) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(statistic);
@@ -31,7 +32,7 @@ public class StatisticDAO implements IStatisticDAO{
     }
 
     @Override
-    public void update(Statistic statistic) {
+    public void update(Transaction statistic) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.update(statistic);
@@ -40,16 +41,21 @@ public class StatisticDAO implements IStatisticDAO{
     }
 
     @Override
-    public void add(Statistic statistic) {
-
-    }
-
-    @Override
-    public void delete(Statistic statistic) {
+    public void delete(Transaction statistic) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.delete(statistic);
         session.getTransaction().commit();
         session.close();
+    }
+
+
+    @Override
+    public List<Transaction> getByAccountId(Integer id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<Transaction> list = session.createQuery("from Transaction where Account_id = "+id, Transaction.class).list();
+        session.close();
+        return list;
     }
 }

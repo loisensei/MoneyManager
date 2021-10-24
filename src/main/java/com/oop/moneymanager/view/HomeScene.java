@@ -3,6 +3,9 @@ package com.oop.moneymanager.view;
 import com.jfoenix.controls.JFXComboBox;
 import com.oop.moneymanager.controller.AccountController;
 import com.oop.moneymanager.model.Account;
+import com.oop.moneymanager.model.Transaction;
+import com.oop.moneymanager.model.dao.MysqlImp.AccountDAO;
+import com.oop.moneymanager.model.dao.MysqlImp.TransactionDAO;
 import com.oop.moneymanager.utils.GuiUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class HomeScene extends BaseView {
@@ -35,7 +39,7 @@ public class HomeScene extends BaseView {
 
     @FXML
     void onBtnDailyClick(MouseEvent event) {
-        AddDailyPopup addDailyPopup = (AddDailyPopup) GuiUtils.setPane(panelView,"AddDailyPopup");
+        DailyPane addDailyPopup = (DailyPane) GuiUtils.setPane(panelView,"DailyPane");
         addDailyPopup.setParams("accountController",this.accountController);
     }
 
@@ -54,8 +58,8 @@ public class HomeScene extends BaseView {
     void onSelectAccount(ActionEvent event) {
         if(cbListAccount.getValue() != null) {
             Account account = cbListAccount.getValue();
-
-            lbBalance.setText(account.getBalance().toString());
+            Integer balance = accountController.calCurrentBalance(account);
+            lbBalance.setText(balance.toString());
         }
     }
 
@@ -76,6 +80,12 @@ public class HomeScene extends BaseView {
         this.initListAccount();
         int index = this.cbListAccount.getItems().indexOf(account);
         this.cbListAccount.getSelectionModel().select(index);
+    }
+
+    public static void main(String[] args) {
+        TransactionDAO transactionDAO = new TransactionDAO();
+        System.out.println(transactionDAO.getByAccountId(1));
+//        AppConst.WeekDay w = AppConst.WeekDay;
     }
 
 }

@@ -1,6 +1,7 @@
-package com.oop.moneymanager.model.dao;
+package com.oop.moneymanager.model.dao.MysqlImp;
 
 import com.oop.moneymanager.model.Account;
+import com.oop.moneymanager.model.dao.IAccountDAO;
 import com.oop.moneymanager.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,7 +9,7 @@ import org.hibernate.SessionFactory;
 import javax.persistence.Query;
 import java.util.List;
 
-public class AccountDAO implements IAccountDAO{
+public class AccountDAO implements IAccountDAO {
     private SessionFactory sessionFactory;
     public AccountDAO(){
         this.sessionFactory = HibernateUtils.getConnection();
@@ -48,11 +49,6 @@ public class AccountDAO implements IAccountDAO{
         session.update(account);
         session.getTransaction().commit();
         session.close();
-    }
-
-    @Override
-    public void add(Account account) {
-
     }
 
     @Override

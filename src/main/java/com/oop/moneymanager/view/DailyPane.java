@@ -16,8 +16,13 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddDailyPopup extends BaseView implements Initializable {
+public class DailyPane extends BaseView{
     private AccountController accountController;
+    private HomeScene homeScene;
+    public DailyPane(){
+        this.homeScene = (HomeScene) this.getParam("parent");
+        this.accountController = (AccountController) this.getParam("accountController");
+    }
     private final ObservableList<String> listKindOfTime = FXCollections.observableArrayList();
     @FXML
     private JFXComboBox<String> cbKindOfTime;
@@ -36,7 +41,7 @@ public class AddDailyPopup extends BaseView implements Initializable {
     @FXML
     void onClickAddStatistic(MouseEvent event) {
         AddSpendingPopup addSpendingPopup = (AddSpendingPopup) GuiUtils.openPopup(this,"AddSpendingPopup");
-
+        addSpendingPopup.setParams("accountController",this.accountController);
     }
 
     @FXML

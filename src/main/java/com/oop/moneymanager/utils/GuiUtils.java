@@ -33,17 +33,17 @@ public class GuiUtils {
         popupController.setParams("parent",parent);
         return popupController;
     }
-    public static Object setPane(Pane paneName, String sourceName){
-        paneName.getChildren().clear();
+    public static Object setPane(Pane pane, String sourceName){
+        pane.getChildren().clear();
         FXMLLoader fxmlLoader = new FXMLLoader(HomeScene.class.getResource(sourceName+".fxml"));
         try {
-            paneName.getChildren().add(fxmlLoader.load());
+            pane.getChildren().add(fxmlLoader.load());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         BaseView popupController = fxmlLoader.getController();
-        popupController.setParams("parent",paneName.getParent());
+        popupController.setParams("parent",pane.getParent());
         return popupController;
     }
     public static void addNumericInputListener(TextField tf){

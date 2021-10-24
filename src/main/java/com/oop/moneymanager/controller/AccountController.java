@@ -1,13 +1,22 @@
 package com.oop.moneymanager.controller;
 
+import com.oop.moneymanager.AppConst;
 import com.oop.moneymanager.model.Account;
-import com.oop.moneymanager.model.dao.AccountDAO;
+import com.oop.moneymanager.model.Category;
+import com.oop.moneymanager.model.Transaction;
+import com.oop.moneymanager.model.dao.ITransactionDAO;
+import com.oop.moneymanager.model.dao.MysqlImp.AccountDAO;
+import com.oop.moneymanager.model.dao.IAccountDAO;
+import com.oop.moneymanager.model.dao.MysqlImp.TransactionDAO;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public class AccountController {
-    private AccountDAO accountDAO;
+    private ITransactionDAO transactionDAO;
+    private IAccountDAO accountDAO;
     public AccountController(){
+        this.transactionDAO = new TransactionDAO();
         this.accountDAO = new AccountDAO();
     }
 
@@ -21,5 +30,16 @@ public class AccountController {
 
     public void insert(Account account){
         accountDAO.save(account);
+    }
+    public Integer calCurrentBalance(Account account){
+        List<Transaction> list = transactionDAO.getByAccountId(account.getId());
+        Integer balance = account.getInitialBalance();
+        for(Transaction transaction : list){
+            Integer amout = transaction.getAmount();
+            Integer type = transaction.getCategory().getType();
+            if(type.equals(AppConst.CATEGORY_TYPE.EXPENSE)) amout = -amout;
+            balance += amout;
+        }
+        return balance;
     }
 }
