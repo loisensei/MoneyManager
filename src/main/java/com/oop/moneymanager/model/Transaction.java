@@ -2,6 +2,7 @@ package com.oop.moneymanager.model;
 
 
 import lombok.Data;
+import lombok.NonNull;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -23,13 +24,16 @@ public class Transaction {
     private Category category;
 
     @Column
+    @NonNull
     private Integer amount;
 
     @Column
+    @NonNull
     private Date time;
 
     @Column
     private String note;
+
 
     public Transaction(Integer numberOfMoney, Date time, String notes) {
         this.amount = numberOfMoney;
@@ -38,12 +42,8 @@ public class Transaction {
     }
     public Transaction(){}
 
-    public Integer getIdAccount() {
-        return this.account.getId();
-    }
-
-    public Integer getIdCategory() {
-        return this.category.getId();
+    public Integer getType() {
+        return this.category.getType();
     }
 
 }

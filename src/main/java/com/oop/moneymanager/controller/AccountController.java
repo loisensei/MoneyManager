@@ -20,6 +20,8 @@ public class AccountController {
         this.accountDAO = new AccountDAO();
     }
 
+
+
     public List<Account> getListAccount(){
         return this.accountDAO.getAll();
     }

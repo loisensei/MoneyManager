@@ -5,6 +5,8 @@ import com.oop.moneymanager.model.Transaction;
 import com.oop.moneymanager.model.dao.ITransactionDAO;
 import com.oop.moneymanager.model.dao.MysqlImp.TransactionDAO;
 
+import java.util.List;
+
 public class TransactionController {
     private ITransactionDAO transactionDAO;
     private AccountController accountController;
@@ -14,6 +16,10 @@ public class TransactionController {
         this.transactionDAO = new TransactionDAO();
         this.setAccount(account);
 
+    }
+
+    public List<Transaction> getAll(){
+        return transactionDAO.getByAccountId(this.account.getId());
     }
 
     public void setAccount(Account account){

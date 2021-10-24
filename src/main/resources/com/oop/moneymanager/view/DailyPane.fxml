@@ -67,11 +67,11 @@
       <center>
          <VBox BorderPane.alignment="CENTER">
             <children>
-               <HBox alignment="CENTER" prefHeight="75.0" prefWidth="750.0" stylesheets="@../../../../css/styles.css">
+               <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="750.0" stylesheets="@../../../../css/styles.css">
                   <children>
-                     <VBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="147.0">
+                     <VBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="95.0">
                         <children>
-                           <Label text="Ngày">
+                           <Label fx:id="lbTime" text="Ngày">
                               <font>
                                  <Font name="System Bold" size="14.0" />
                               </font>
@@ -81,37 +81,36 @@
                            </Label>
                         </children>
                      </VBox>
-                     <VBox alignment="CENTER" prefHeight="75.0" prefWidth="187.0">
+                     <VBox alignment="CENTER" prefHeight="75.0" prefWidth="105.0">
                         <children>
-                           <Label text="Thể loại">
+                           <Label fx:id="lbCategory" text="Thể Loại">
                               <font>
                                  <Font name="System Bold" size="14.0" />
                               </font>
                            </Label>
                         </children>
                      </VBox>
-                     <VBox alignment="CENTER" prefHeight="75.0" prefWidth="200.0">
+                     <VBox alignment="CENTER" prefHeight="62.0" prefWidth="119.0">
                         <children>
-                           <Label text="Thu" textFill="#472fe4">
+                           <Label fx:id="lbAmount" text="Số tiền" textFill="#2c2b30">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </Label>
                         </children>
                      </VBox>
-                     <VBox alignment="CENTER" prefHeight="75.0" prefWidth="194.0">
+                     <VBox alignment="CENTER" prefHeight="62.0" prefWidth="425.0">
                         <children>
-                           <Label text="Chi" textFill="#e11414">
+                           <Label fx:id="lbNote" text="Ghi chú" textFill="#252426">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </Label>
                         </children>
                      </VBox>
-                     <VBox alignment="CENTER" prefHeight="75.0" prefWidth="54.0" />
                   </children>
                </HBox>
-               <ListView fx:id="listViewStatistic" prefHeight="481.0" prefWidth="746.0" />
+               <ListView fx:id="lvTransactions" prefHeight="481.0" prefWidth="746.0" />
             </children>
          </VBox>
       </center>

@@ -19,6 +19,8 @@ public class Category {
     @Column
     private Integer type;
 
+    @Column(columnDefinition = "int default 1")
+    public Boolean isVisible;
 
     public Category(String name, Integer type) {
         this.name = name;

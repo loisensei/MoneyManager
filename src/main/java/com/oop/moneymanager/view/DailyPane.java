@@ -10,16 +10,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class DailyPane extends BasePane{
-    private AccountController accountController;
     private TransactionController transactionController;
     private final ObservableList<String> listKindOfTime = FXCollections.observableArrayList();
     @FXML
@@ -29,7 +31,7 @@ public class DailyPane extends BasePane{
     private Label lbDateView;
 
     @FXML
-    private ListView<Pane> listViewStatistic;
+    private ListView<Pane> lvTransactions;
 
     @FXML
     void onActionKindOfTime(ActionEvent event) {
@@ -54,7 +56,6 @@ public class DailyPane extends BasePane{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.homeScene = (HomeScene) this.getParam("parent");
-        this.accountController = (AccountController) this.getParam("accountController");
         listKindOfTime.addAll("Day","Month","Year");
         cbKindOfTime.setItems(listKindOfTime);
     }
@@ -66,10 +67,31 @@ public class DailyPane extends BasePane{
         }else {
             transactionController.setAccount(account);
         }
+        loadTransactions();
     }
 
     public void onAddTransaction(Transaction transaction){
         transactionController.add(transaction);
         homeScene.updateBalance();
+        loadTransactions();
+    }
+
+    public void loadTransactions(){
+        if(this.transactionController != null) {
+            lvTransactions.getItems().clear();
+            List<Transaction> transactions = transactionController.getAll();
+            for (Transaction transaction : transactions) {
+                FXMLLoader fxmlLoader = new FXMLLoader(DailyPane.class.getResource("ItemTransaction.fxml"));
+                try {
+                    lvTransactions.getItems().add(fxmlLoader.load());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                ItemTransaction item = fxmlLoader.getController();
+                item.setTransaction(transaction);
+
+
+            }
+        }
     }
 }

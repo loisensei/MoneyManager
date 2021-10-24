@@ -36,6 +36,7 @@ public class HomeScene extends BaseView {
     void onBtnAddAccountClick(MouseEvent event) {
         AddAccountPopup addAccountPopup = (AddAccountPopup)GuiUtils.openPopup(this,"AddAccountPopup");
         addAccountPopup.setParams("accountController",this.accountController);
+
     }
 
     @FXML
@@ -59,6 +60,8 @@ public class HomeScene extends BaseView {
         updateBalance();
         if (this.currentPane != null){
             this.currentPane.reload(cbListAccount.getValue());
+        } else{
+            this.setPane("DailyPane");
         }
     }
 
@@ -84,7 +87,6 @@ public class HomeScene extends BaseView {
     public static void main(String[] args) {
         TransactionDAO transactionDAO = new TransactionDAO();
         System.out.println(transactionDAO.getByAccountId(1));
-//        AppConst.WeekDay w = AppConst.WeekDay;
     }
 
     public void updateBalance(){

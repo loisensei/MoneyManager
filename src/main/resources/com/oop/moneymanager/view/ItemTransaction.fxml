@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefWidth="749.6" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefWidth="749.6" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.ItemTransaction">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="75.0" prefWidth="750.0" stylesheets="@../../../../css/styles.css">
+            <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="750.0" stylesheets="@../../../../css/styles.css">
                <children>
-                  <VBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="164.0">
+                  <VBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="95.0">
                      <children>
-                        <Label fx:id="lbDate" text="03/10/2021">
+                        <Label fx:id="lbTime" text="03/10/2021">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -25,7 +25,7 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="75.0" prefWidth="176.0">
+                  <VBox alignment="CENTER" prefHeight="75.0" prefWidth="105.0">
                      <children>
                         <Label fx:id="lbCategory" text="Giải trí">
                            <font>
@@ -34,18 +34,18 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="75.0" prefWidth="210.0">
+                  <VBox alignment="CENTER" prefHeight="75.0" prefWidth="114.0">
                      <children>
-                        <Label fx:id="lbCollect" text="0đ" textFill="#472fe4">
+                        <Label fx:id="lbAmount" text="0đ" textFill="#472fe4">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="75.0" prefWidth="193.0">
+                  <VBox alignment="CENTER" prefHeight="75.0" prefWidth="433.0">
                      <children>
-                        <Label fx:id="lbSpend" text="0đ" textFill="#e11414">
+                        <Label fx:id="lbNote" text="note" textFill="#252426">
                            <font>
                               <Font size="14.0" />
                            </font>
