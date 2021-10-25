@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="450.0" prefWidth="360.0" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.EditCategory">
+   <children>
+      <VBox layoutX="99.0" layoutY="118.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="62.0" prefWidth="360.0">
+               <children>
+                  <BorderPane prefHeight="62.0" prefWidth="117.0">
+                     <center>
+                        <Label text="Thể loại" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </center>
+                  </BorderPane>
+                  <VBox prefHeight="62.0" prefWidth="178.0" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="36.0" fitWidth="42.0" onMouseClicked="#onBtnAddClick" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                           <image>
+                              <Image url="@../../../../img/addd.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <JFXListView fx:id="lvCategories" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

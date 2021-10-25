@@ -15,6 +15,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.sql.Date;
@@ -52,6 +53,12 @@ public class InputTransactionPopup extends BaseView {
     private TextArea txtNote;
 
     @FXML
+    void onBtnEditCategoryClick(MouseEvent event) {
+        EditCategory edit = (EditCategory) GuiUtils.openPopup(this,"EditCategory");
+        edit.setParams("categoryController",this.categoryController);
+    }
+
+    @FXML
     void onBtnAddClick(ActionEvent event) {
         Category category = cbCategories.getValue();
         boolean isValidInput = true;
@@ -64,9 +71,9 @@ public class InputTransactionPopup extends BaseView {
             isValidInput = false;
         }
         if (!isValidInput) return;
-        Integer amout = Integer.valueOf(txtAmount.getText());
+        Integer amount = Integer.valueOf(txtAmount.getText());
         Transaction transaction = new Transaction();
-        transaction.setAmount(amout);
+        transaction.setAmount(amount);
         transaction.setCategory(category);
         transaction.setTime(Date.valueOf(dpTime.getValue()));
         transaction.setNote(txtNote.getText());
