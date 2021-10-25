@@ -40,14 +40,14 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtAmount" layoutX="82.0" layoutY="172.0" prefHeight="25.0" prefWidth="203.0" styleClass="txt-field-blue" />
+      <TextField fx:id="txtAmount" layoutX="82.0" layoutY="172.0" prefHeight="25.0" prefWidth="203.0" />
       <Label layoutX="26.0" layoutY="237.0" text="Ghi chú">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextArea fx:id="txtNote" layoutX="82.0" layoutY="237.0" prefHeight="99.0" prefWidth="204.0" styleClass="txt-field-blue" />
-      <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="286.0" layoutY="118.0" onMouseClicked="#onBtnEditCategoryClick" pickOnBounds="true" preserveRatio="true" styleClass="pen-button">
+      <TextArea fx:id="txtNote" layoutX="82.0" layoutY="237.0" prefHeight="99.0" prefWidth="204.0" />
+      <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="286.0" layoutY="118.0" onMouseClicked="#onBtnEditCategoryClick" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../img/pencil_32px.png" />
          </image>

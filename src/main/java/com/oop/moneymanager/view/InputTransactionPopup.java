@@ -26,6 +26,7 @@ import java.util.ResourceBundle;
 
 public class InputTransactionPopup extends BaseView {
     private CategoryController categoryController;
+    private Integer mode;
     @FXML
     private Label lbWarningAmount;
 
@@ -54,8 +55,8 @@ public class InputTransactionPopup extends BaseView {
 
     @FXML
     void onBtnEditCategoryClick(MouseEvent event) {
-        EditCategory edit = (EditCategory) GuiUtils.openPopup(this,"EditCategory");
-        edit.setParams("categoryController",this.categoryController);
+        EditCategory editCategory = (EditCategory) GuiUtils.openPopup(this,"EditCategory");
+        editCategory.loadCategory(this.mode);
     }
 
     @FXML
@@ -102,6 +103,8 @@ public class InputTransactionPopup extends BaseView {
 
     }
     public void setMode(Integer mode){
+        System.out.println("mode "+mode);
+        this.mode = mode;
         List<Category> categories;
         categories = categoryController.getByType(mode);
         resetCategories(categories);
@@ -122,6 +125,10 @@ public class InputTransactionPopup extends BaseView {
         ObservableList<Category> list = FXCollections.observableList(categories);
         cbCategories.getItems().clear();
         cbCategories.setItems(list);
+    }
+
+    public void reloadCategories(){
+//        Category currentCategory = cbCategories.getSelectionModel().getSelectedItem();
     }
 
 }
