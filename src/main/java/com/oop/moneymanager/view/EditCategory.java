@@ -5,6 +5,7 @@ import com.oop.moneymanager.controller.CategoryController;
 import com.oop.moneymanager.model.Category;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -22,15 +23,22 @@ public class EditCategory extends BaseView{
     private JFXListView<Pane> lvCategories;
 
     @FXML
-    void onBtnAddClick(MouseEvent event) {
+    private TextField txtAddCategory;
 
+    @FXML
+    void onBtnAddClick(MouseEvent event) {
+        this.inputTransactionPopup = (InputTransactionPopup) this.getParam("parent");
+        Category category = new Category();
+        category.setType(this.mode);
+        category.setName(txtAddCategory.getText());
+        this.categoryController.add(category);
         loadCategory(this.mode);
+        this.inputTransactionPopup.reloadCategories(this.mode);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lvCategories.setStyle("-fx-selection-bar: white");
-        this.inputTransactionPopup = (InputTransactionPopup) this.getParam("parent");
         this.categoryController = new CategoryController();
     }
     public void loadCategory(Integer mode){

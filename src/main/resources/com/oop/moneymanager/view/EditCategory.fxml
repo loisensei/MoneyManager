@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXListView?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,7 +26,10 @@
                         </Label>
                      </center>
                   </BorderPane>
-                  <VBox prefHeight="62.0" prefWidth="178.0" />
+                  <VBox alignment="CENTER" prefHeight="62.0" prefWidth="178.0">
+                     <children>
+                        <TextField fx:id="txtAddCategory" styleClass="txt-field-blue" stylesheets="@../../../../css/styles.css" />
+                     </children></VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <ImageView fitHeight="36.0" fitWidth="42.0" onMouseClicked="#onBtnAddClick" pickOnBounds="true" preserveRatio="true" styleClass="button">

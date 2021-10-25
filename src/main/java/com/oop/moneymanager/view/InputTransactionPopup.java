@@ -127,8 +127,9 @@ public class InputTransactionPopup extends BaseView {
         cbCategories.setItems(list);
     }
 
-    public void reloadCategories(){
-//        Category currentCategory = cbCategories.getSelectionModel().getSelectedItem();
+    public void reloadCategories(Integer mode){
+        List<Category> list = categoryController.getByType(mode);
+        resetCategories(list);
     }
 
 }

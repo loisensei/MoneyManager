@@ -12,6 +12,10 @@ public class CategoryController {
     public CategoryController(){
         this.categoryDAO = new CategoryDAO();
     }
+    public void add(Category category){
+        category.setIsVisible(true);
+        this.categoryDAO.save(category);
+    }
     public List<Category> getByType(Integer type){
         List<Category> list = categoryDAO.getByType(type);
         List<Category> result = new ArrayList<>();
