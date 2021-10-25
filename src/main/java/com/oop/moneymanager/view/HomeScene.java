@@ -52,7 +52,7 @@ public class HomeScene extends BaseView {
 
     @FXML
     void onBtnStatsClick(MouseEvent event) {
-        this.setPane("AddStatisticsPopup");
+        this.setPane("StatisticPane");
     }
 
     @FXML

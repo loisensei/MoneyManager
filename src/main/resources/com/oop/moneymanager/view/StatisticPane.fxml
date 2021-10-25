@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.AddStatisticsPopup">
+<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.StatisticPane">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="168.0" layoutY="187.0" prefHeight="178.0" prefWidth="414.0" text="Thống Kê" textAlignment="CENTER" textFill="#0e12d9">
          <font>

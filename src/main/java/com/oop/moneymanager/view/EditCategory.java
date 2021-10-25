@@ -29,6 +29,7 @@ public class EditCategory extends BaseView{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        lvCategories.setStyle("-fx-selection-bar: white");
         this.inputTransactionPopup = (InputTransactionPopup) this.getParam("parent");
         this.categoryController = new CategoryController();
     }
