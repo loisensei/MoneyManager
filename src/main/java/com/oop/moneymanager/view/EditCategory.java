@@ -1,13 +1,17 @@
 package com.oop.moneymanager.view;
 
 import com.jfoenix.controls.JFXListView;
+import com.oop.moneymanager.AppConst;
 import com.oop.moneymanager.controller.CategoryController;
 import com.oop.moneymanager.model.Category;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,7 +24,10 @@ public class EditCategory extends BaseView{
     private CategoryController categoryController;
     private Integer mode;
     @FXML
-    private JFXListView<Pane> lvCategories;
+    private ListView<Pane> lvCategories;
+
+    @FXML
+    private Label lbCategory;
 
     @FXML
     private TextField txtAddCategory;
@@ -28,12 +35,13 @@ public class EditCategory extends BaseView{
     @FXML
     void onBtnAddClick(MouseEvent event) {
         this.inputTransactionPopup = (InputTransactionPopup) this.getParam("parent");
+        String categoryName = txtAddCategory.getText().trim().toLowerCase();
+        categoryName = String.valueOf(categoryName.charAt(0)).toUpperCase() + categoryName.substring(1);
         Category category = new Category();
         category.setType(this.mode);
-        category.setName(txtAddCategory.getText());
+        category.setName(categoryName);
         this.categoryController.add(category);
-        loadCategory(this.mode);
-        this.inputTransactionPopup.reloadCategories(this.mode);
+        loadCategories(this.mode);
     }
 
     @Override
@@ -41,10 +49,12 @@ public class EditCategory extends BaseView{
         lvCategories.setStyle("-fx-selection-bar: white");
         this.categoryController = new CategoryController();
     }
-    public void loadCategory(Integer mode){
+
+    public void loadCategories(Integer mode){
         this.mode = mode;
-        this.lvCategories.getItems().clear();
         List<Category> list = this.categoryController.getByType(mode);
+
+        this.lvCategories.getItems().clear();
         for(Category category : list) {
             FXMLLoader fxmlLoader = new FXMLLoader(HomeScene.class.getResource("ItemCategory.fxml"));
             try {
@@ -52,8 +62,22 @@ public class EditCategory extends BaseView{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            ItemCategory ctl = (ItemCategory) fxmlLoader.getController();
-            ctl.setCategory(category);
+            ItemCategory itemCategory = (ItemCategory) fxmlLoader.getController();
+            itemCategory.setCategory(category);
+            itemCategory.setMode(this.mode);
+            itemCategory.setParams("parent",this);
         }
     }
+
+    private void closeProgram(){
+        this.inputTransactionPopup.reloadCategories(this.mode);
+    }
+    public void setLabelCategory(Integer mode){
+        if(mode.equals(AppConst.CATEGORY_TYPE.INCOME)){
+            lbCategory.setStyle("-fx-text-fill: Blue");
+        }else{
+            lbCategory.setStyle("-fx-text-fill: #FD5200");
+        }
+    }
+
 }

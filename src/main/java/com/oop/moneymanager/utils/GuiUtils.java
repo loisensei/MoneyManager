@@ -31,6 +31,7 @@ public class GuiUtils {
 
         BaseView popupController = fxmlLoader.getController();
         popupController.setParams("parent",parent);
+        popupController.setParams("scene",scene);
         return popupController;
     }
     public static Object setPane(Pane pane, String sourceName){

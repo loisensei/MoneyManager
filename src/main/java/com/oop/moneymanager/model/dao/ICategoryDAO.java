@@ -8,4 +8,6 @@ import java.util.List;
 public interface ICategoryDAO extends IDAO<Category>{
     public boolean isEmpty();
     public List<Category> getByType(Integer type);
+    public Category getByName(String name);
+    public Integer getId(String name);
 }

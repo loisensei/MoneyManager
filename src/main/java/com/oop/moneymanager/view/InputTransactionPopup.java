@@ -11,11 +11,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Date;
@@ -56,7 +58,16 @@ public class InputTransactionPopup extends BaseView {
     @FXML
     void onBtnEditCategoryClick(MouseEvent event) {
         EditCategory editCategory = (EditCategory) GuiUtils.openPopup(this,"EditCategory");
-        editCategory.loadCategory(this.mode);
+        editCategory.loadCategories(this.mode);
+        Scene popupEditCategories = (Scene) editCategory.getParam("scene");
+        Stage stage = (Stage) popupEditCategories.getWindow();
+        if(Objects.equals(this.mode, AppConst.CATEGORY_TYPE.INCOME)){
+            stage.setTitle("Thu");
+        }else{
+            stage.setTitle("Chi");
+        }
+        editCategory.setLabelCategory(this.mode);
+        popupEditCategories.getWindow().setOnCloseRequest(e->this.reloadCategories(this.mode));
     }
 
     @FXML

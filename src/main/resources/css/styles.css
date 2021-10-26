@@ -80,3 +80,6 @@
     -fx-tick-label-fill: red;
 }
 
+.txt-transparent{
+    -fx-background-color: transparent;
+}

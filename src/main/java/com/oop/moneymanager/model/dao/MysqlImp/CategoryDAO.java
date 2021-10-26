@@ -67,4 +67,30 @@ public class CategoryDAO implements ICategoryDAO {
         session.close();
         return list;
     }
+
+    @Override
+    public Category getByName(String name) {
+        Session session = this.sessionFactory.openSession();
+        session.beginTransaction();
+        List<Category> list = session.createQuery("FROM Category where name = '"+name+"'",Category.class).list();
+        if(list.size() == 0){
+            return null;
+        }
+        session.close();
+        return list.get(0);
+    }
+
+    @Override
+    public Integer getId(String name) {
+        Session session = this.sessionFactory.openSession();
+        session.beginTransaction();
+        List<Category> list = session.createQuery("FROM Category where name = '"+name+"'",Category.class).list();
+        if(list.size() == 0){
+            return null;
+        }
+        session.close();
+        return list.get(0).getId();
+    }
+
+
 }
