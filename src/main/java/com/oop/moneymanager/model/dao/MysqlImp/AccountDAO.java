@@ -19,9 +19,10 @@ public class AccountDAO implements IAccountDAO {
     public Boolean isExist(String accountName) {
         Session session = this.sessionFactory.openSession();
         session.beginTransaction();
-        String hql = "select A.name from Account A where A.name = '"+ accountName+"'";
-        Query query = session.createQuery(hql);
-        return !query.getResultList().isEmpty();
+        List<Account> list = session.createQuery("from Account where name ='"+ accountName+"'",Account.class).getResultList();
+        session.close();
+        return !list.isEmpty();
+
     }
 
     @Override

@@ -14,10 +14,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -33,6 +35,9 @@ public class DailyPane extends BasePane{
 
     @FXML
     private ListView<Pane> lvTransactions;
+
+    @FXML
+    private HBox hbTime;
 
     @FXML
     void onActionKindOfTime(ActionEvent event) {
@@ -58,8 +63,10 @@ public class DailyPane extends BasePane{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.homeScene = (HomeScene) this.getParam("parent");
-        listKindOfTime.addAll("Day","Month","Year");
+        listKindOfTime.addAll("All","Day","Month","Year");
         cbKindOfTime.setItems(listKindOfTime);
+        LocalDate localDate = LocalDate.now();
+        lbDateView.setText(localDate.toString());
     }
 
     @Override

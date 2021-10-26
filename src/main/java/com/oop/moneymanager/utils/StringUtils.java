@@ -6,7 +6,11 @@ public class StringUtils {
     }
 
     public static Boolean isValidBalance(String balance){
-        // todo: full check
-        return balance.length() > 0;
+        try{
+            Integer n = Integer.parseInt(balance);
+            return true;
+        } catch (Exception ignored){
+            return false;
+        }
     }
 }

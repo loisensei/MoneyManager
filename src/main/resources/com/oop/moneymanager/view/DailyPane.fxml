@@ -17,7 +17,7 @@
         <top>
           <HBox prefHeight="66.0" prefWidth="746.0" BorderPane.alignment="CENTER">
             <children>
-               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" stylesheets="@../../../../css/styles.css">
+               <HBox fx:id="hbTime" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" stylesheets="@../../../../css/styles.css">
                   <children>
                      <ImageView fitHeight="34.0" fitWidth="31.0" onMouseClicked="#onClickBackward" pickOnBounds="true" preserveRatio="true" styleClass="left-button">
                         <image>

@@ -46,4 +46,20 @@ public class Transaction {
         return this.category.getType();
     }
 
+    public void copy(Transaction transaction){
+        this.setNote(transaction.getNote());
+        this.setAmount(transaction.getAmount());
+        this.setCategory(transaction.getCategory());
+        this.setTime(transaction.getTime());
+        this.setAccount(transaction.getAccount());
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof Transaction transaction){
+            return transaction.getId().equals(this.getId());
+        }
+        return false;
+    }
+
 }

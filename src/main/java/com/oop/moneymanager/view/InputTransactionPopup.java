@@ -125,6 +125,7 @@ public class InputTransactionPopup extends BaseView {
         LocalDate localDate = LocalDate.now();
         dpTime.setValue(localDate);
 
+
     }
     public void setMode(Integer mode){
         this.mode = mode;
