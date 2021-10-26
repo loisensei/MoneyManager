@@ -11,6 +11,9 @@ public class TransactionController {
     private ITransactionDAO transactionDAO;
     private AccountController accountController;
     private Account account;
+    public TransactionController(){
+        this.transactionDAO = new TransactionDAO();
+    }
     public TransactionController(Account account){
         this.accountController = new AccountController();
         this.transactionDAO = new TransactionDAO();
@@ -29,5 +32,7 @@ public class TransactionController {
         transaction.setAccount(this.account);
         transactionDAO.save(transaction);
     }
-
+    public void update(Transaction transaction){
+        transactionDAO.update(transaction);
+    }
 }

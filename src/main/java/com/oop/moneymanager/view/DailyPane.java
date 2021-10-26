@@ -40,7 +40,7 @@ public class DailyPane extends BasePane{
 
     @FXML
     void onAddTransactionClick(MouseEvent event) {
-        InputTransactionPopup addSpendingPopup = (InputTransactionPopup) GuiUtils.openPopup(this,"AddSpendingPopup");
+        InputTransactionPopup addSpendingPopup = (InputTransactionPopup) GuiUtils.openPopup(this,"InputTransactionPopup");
     }
 
     @FXML
@@ -52,6 +52,7 @@ public class DailyPane extends BasePane{
     void onClickForward(MouseEvent event) {
 
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

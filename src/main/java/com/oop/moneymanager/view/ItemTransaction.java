@@ -2,10 +2,17 @@ package com.oop.moneymanager.view;
 
 import com.oop.moneymanager.AppConst;
 import com.oop.moneymanager.model.Transaction;
+import com.oop.moneymanager.utils.GuiUtils;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
-public class ItemTransaction{
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ItemTransaction extends BaseView{
     private Transaction transaction;
 
     @FXML
@@ -19,6 +26,15 @@ public class ItemTransaction{
 
     @FXML
     private Label lbNote;
+
+    @FXML
+    void onEditTransactionClick(MouseEvent event) {
+        InputTransactionPopup inputTransactionPopup = (InputTransactionPopup) GuiUtils.openPopup(this,"InputTransactionPopup");
+        Scene scene = (Scene) inputTransactionPopup.getParam("scene");
+        Stage stage = (Stage) scene.getWindow();
+        stage.setTitle("Chỉnh sửa");
+        inputTransactionPopup.setData(this.transaction);
+    }
     
     public void setTransaction(Transaction transaction) {
         this.transaction = transaction;
@@ -34,5 +50,12 @@ public class ItemTransaction{
             lbNote.setText(transaction.getNote());
         }
     }
+    public Transaction getTransaction() {
+        return this.transaction;
+    }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.oop.moneymanager.AppConst;
 import com.oop.moneymanager.controller.CategoryController;
+import com.oop.moneymanager.controller.TransactionController;
 import com.oop.moneymanager.model.Category;
 import com.oop.moneymanager.model.Transaction;
 import com.oop.moneymanager.utils.GuiUtils;
@@ -28,6 +29,7 @@ import java.util.ResourceBundle;
 
 public class InputTransactionPopup extends BaseView {
     private CategoryController categoryController;
+    private Transaction transaction;
     private Integer mode;
     @FXML
     private Label lbWarningAmount;
@@ -72,26 +74,37 @@ public class InputTransactionPopup extends BaseView {
 
     @FXML
     void onBtnAddClick(ActionEvent event) {
-        Category category = cbCategories.getValue();
-        boolean isValidInput = true;
-        if (category == null){
-            lbWarningCategory.setVisible(true);
-            isValidInput = false;
+        if(btnAdd.getText().equals("Thêm")) {
+            Category category = cbCategories.getValue();
+            boolean isValidInput = true;
+            if (category == null) {
+                lbWarningCategory.setVisible(true);
+                isValidInput = false;
+            }
+            if (txtAmount.getText().equals("")) {
+                lbWarningAmount.setVisible(true);
+                isValidInput = false;
+            }
+            if (!isValidInput) return;
+            Integer amount = Integer.valueOf(txtAmount.getText());
+            Transaction transaction = new Transaction();
+            transaction.setAmount(amount);
+            transaction.setCategory(category);
+            transaction.setTime(Date.valueOf(dpTime.getValue()));
+            transaction.setNote(txtNote.getText());
+            DailyPane dailyPane = (DailyPane) this.getParam("parent");
+            dailyPane.onAddTransaction(transaction);
         }
-        if(txtAmount.getText().equals("")){
-            lbWarningAmount.setVisible(true);
-            isValidInput = false;
+        //Change Transaction :
+        if(btnAdd.getText().equals("Sửa")) {
+            fixTransaction();
+            TransactionController transactionController = new TransactionController();
+            transactionController.update(this.transaction);
+            ItemTransaction itemTransaction = (ItemTransaction) this.getParam("parent");
+            itemTransaction.setTransaction(this.transaction);
         }
-        if (!isValidInput) return;
-        Integer amount = Integer.valueOf(txtAmount.getText());
-        Transaction transaction = new Transaction();
-        transaction.setAmount(amount);
-        transaction.setCategory(category);
-        transaction.setTime(Date.valueOf(dpTime.getValue()));
-        transaction.setNote(txtNote.getText());
-        DailyPane dailyPane = (DailyPane) this.getParam("parent");
-        dailyPane.onAddTransaction(transaction);
         closeScene(event);
+
     }
 
     @FXML
@@ -114,12 +127,14 @@ public class InputTransactionPopup extends BaseView {
 
     }
     public void setMode(Integer mode){
-        System.out.println("mode "+mode);
         this.mode = mode;
         List<Category> categories;
         categories = categoryController.getByType(mode);
         resetCategories(categories);
+        setModeColor(mode);
+    }
 
+    public void setModeColor(Integer mode){
         if (Objects.equals(mode, AppConst.CATEGORY_TYPE.EXPENSE)) {
             btnAdd.setStyle("-fx-background-color: #FD5200");
             btnExpense.setStyle("-fx-background-color: #FD5200");
@@ -143,4 +158,23 @@ public class InputTransactionPopup extends BaseView {
         resetCategories(list);
     }
 
+    public void setData(Transaction transaction){
+        Integer mode = transaction.getType();
+        Category category = transaction.getCategory();
+        reloadCategories(mode);
+        setModeColor(mode);
+        btnAdd.setText("Sửa");
+        dpTime.setValue(transaction.getTime().toLocalDate());
+        cbCategories.getSelectionModel().select(category);
+        txtAmount.setText(transaction.getAmount().toString());
+        txtNote.setText(transaction.getNote());
+        this.transaction = transaction;
+    }
+
+    public void fixTransaction(){
+        this.transaction.setTime(Date.valueOf(dpTime.getValue()));
+        this.transaction.setCategory(cbCategories.getValue());
+        this.transaction.setAmount(Integer.valueOf(txtAmount.getText()));
+        this.transaction.setNote(txtNote.getText());
+    }
 }
