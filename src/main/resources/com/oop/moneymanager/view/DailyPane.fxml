@@ -24,9 +24,9 @@
                            <Image url="@../../../../img/back_64px.png" />
                         </image>
                      </ImageView>
-                     <Label fx:id="lbDateView" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="113.0" text="29/09/2001" textAlignment="CENTER" textFill="#3c53c7">
+                     <Label fx:id="lbDateView" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="119.0" text="29/09/2001" textAlignment="CENTER" textFill="#3c53c7">
                         <font>
-                           <Font size="18.0" />
+                           <Font size="16.0" />
                         </font>
                      </Label>
                      <ImageView fitHeight="39.0" fitWidth="31.0" onMouseClicked="#onClickForward" pickOnBounds="true" preserveRatio="true" styleClass="right-button">

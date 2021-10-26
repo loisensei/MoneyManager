@@ -47,6 +47,25 @@ public class DailyPane extends BasePane{
     @FXML
     void onActionKindOfTime(ActionEvent event) {
 
+        String s = cbKindOfTime.getValue();
+        switch (s) {
+            case "All" -> {
+                this.setRangeTime(AppConst.RANGE_TIME.ALL);
+                hbTime.setVisible(false);
+            }
+            case "Day" -> {
+                this.setRangeTime(AppConst.RANGE_TIME.DAY);
+                hbTime.setVisible(true);
+            }
+            case "Month" -> {
+                this.setRangeTime(AppConst.RANGE_TIME.MONTH);
+                hbTime.setVisible(true);
+            }
+            case "Year" -> {
+                this.setRangeTime(AppConst.RANGE_TIME.YEAR);
+                hbTime.setVisible(true);
+            }
+        }
     }
 
     @FXML
@@ -74,7 +93,8 @@ public class DailyPane extends BasePane{
         this.homeScene = (HomeScene) this.getParam("parent");
         listKindOfTime.addAll("All","Day","Month","Year");
         cbKindOfTime.setItems(listKindOfTime);
-        this.setRangeTime(AppConst.RANGE_TIME.YEAR);
+        this.setRangeTime(AppConst.RANGE_TIME.ALL);
+        hbTime.setVisible(false);
     }
 
     @Override
