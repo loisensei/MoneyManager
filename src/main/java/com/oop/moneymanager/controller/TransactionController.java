@@ -1,11 +1,13 @@
 package com.oop.moneymanager.controller;
 
+import com.oop.moneymanager.AppConst;
 import com.oop.moneymanager.model.Account;
 import com.oop.moneymanager.model.Category;
 import com.oop.moneymanager.model.Transaction;
 import com.oop.moneymanager.model.dao.ITransactionDAO;
 import com.oop.moneymanager.model.dao.MysqlImp.TransactionDAO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class TransactionController {
@@ -41,5 +43,10 @@ public class TransactionController {
         transactionDAO.update(transaction);
         Transaction transactionToUpdate = this.transactions.stream().filter(t->t.equals(transaction)).toList().get(0);
         if (transactionToUpdate!=null) transactionToUpdate.copy(transaction);
+    }
+
+    public List<Transaction> getByRangeTime(LocalDate startTime, LocalDate endTime){
+
+        return null;
     }
 }

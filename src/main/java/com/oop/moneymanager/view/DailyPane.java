@@ -1,11 +1,13 @@
 package com.oop.moneymanager.view;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.oop.moneymanager.AppConst;
 import com.oop.moneymanager.controller.AccountController;
 import com.oop.moneymanager.controller.TransactionController;
 import com.oop.moneymanager.model.Account;
 import com.oop.moneymanager.model.Transaction;
 import com.oop.moneymanager.utils.GuiUtils;
+import com.oop.moneymanager.utils.TimeUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,12 +22,15 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class DailyPane extends BasePane{
     private TransactionController transactionController;
     private final ObservableList<String> listKindOfTime = FXCollections.observableArrayList();
+    private AppConst.RANGE_TIME rangeTime;
+    private LocalDate currentTime;
 
     @FXML
     private JFXComboBox<String> cbKindOfTime;
@@ -51,12 +56,16 @@ public class DailyPane extends BasePane{
 
     @FXML
     void onClickBackward(MouseEvent event) {
-
+        if (this.currentTime == null) return;
+        this.currentTime = TimeUtils.previousTimeWithRange(this.currentTime,this.rangeTime);
+        this.reloadTxtTime();
     }
 
     @FXML
     void onClickForward(MouseEvent event) {
-
+        if (this.currentTime == null) return;
+        this.currentTime = TimeUtils.nextTimeWithRange(this.currentTime,this.rangeTime);
+        this.reloadTxtTime();
     }
 
 
@@ -65,8 +74,7 @@ public class DailyPane extends BasePane{
         this.homeScene = (HomeScene) this.getParam("parent");
         listKindOfTime.addAll("All","Day","Month","Year");
         cbKindOfTime.setItems(listKindOfTime);
-        LocalDate localDate = LocalDate.now();
-        lbDateView.setText(localDate.toString());
+        this.setRangeTime(AppConst.RANGE_TIME.YEAR);
     }
 
     @Override
@@ -85,8 +93,9 @@ public class DailyPane extends BasePane{
         loadTransactions();
     }
 
-    public void onUpdateTransaction(){
+    public void onUpdateTransaction(Transaction transaction){
         homeScene.updateBalance();
+        this.transactionController.update(transaction);
     }
 
     public void loadTransactions(){
@@ -106,5 +115,24 @@ public class DailyPane extends BasePane{
 
             }
         }
+    }
+
+    public void setRangeTime(AppConst.RANGE_TIME rangeTime){
+        this.rangeTime = rangeTime;
+        if (this.currentTime == null){
+            this.currentTime = LocalDate.now();
+        }
+        Date startTime,endTime;
+        this.reloadTxtTime();
+    }
+
+    private void reloadTxtTime(){
+        String s = switch (this.rangeTime) {
+            case DAY -> this.currentTime.toString();
+            case MONTH -> String.valueOf(this.currentTime.getMonth()) + String.valueOf(this.currentTime.getYear());
+            case YEAR -> String.valueOf(this.currentTime.getYear());
+            case ALL -> "";
+        };
+        this.lbDateView.setText(s);
     }
 }

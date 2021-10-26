@@ -63,6 +63,6 @@
          </font>
       </JFXButton>
       <Label fx:id="lbWarningCategory" layoutX="82.0" layoutY="101.0" text="Chọn thể loại" textFill="#e70a0a" visible="false" />
-      <Label fx:id="lbWarningAmount" layoutX="83.0" layoutY="157.0" text="Nhập số tiền" textFill="#e70a0a" visible="false" />
+      <Label fx:id="lbWarningAmount" layoutX="83.0" layoutY="157.0" text="Số tiền không hợp lệ" textFill="#e70a0a" visible="false" />
    </children>
 </AnchorPane>

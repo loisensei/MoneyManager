@@ -8,6 +8,7 @@ import com.oop.moneymanager.controller.TransactionController;
 import com.oop.moneymanager.model.Category;
 import com.oop.moneymanager.model.Transaction;
 import com.oop.moneymanager.utils.GuiUtils;
+import com.oop.moneymanager.utils.StringUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -75,17 +76,18 @@ public class InputTransactionPopup extends BaseView {
     @FXML
     void onBtnAddClick(ActionEvent event) {
         Category category = cbCategories.getValue();
-        Integer amount = Integer.valueOf(txtAmount.getText());
+
         boolean isValidInput = true;
         if (category == null) {
             lbWarningCategory.setVisible(true);
             isValidInput = false;
         }
-        if (txtAmount.getText().equals("")) {
+        if (!StringUtils.isValidBalance(txtAmount.getText())) {
             lbWarningAmount.setVisible(true);
             isValidInput = false;
         }
         if (!isValidInput) return;
+        Integer amount = Integer.valueOf(txtAmount.getText());
         Transaction transaction = new Transaction();
         transaction.setAmount(amount);
         transaction.setCategory(category);
@@ -98,8 +100,6 @@ public class InputTransactionPopup extends BaseView {
         //Change Transaction :
         if(btnAdd.getText().equals("Sửa")) {
             transaction.setId(this.transaction.getId());
-            TransactionController transactionController = new TransactionController();
-            transactionController.update(transaction);
             ItemTransaction itemTransaction = (ItemTransaction) this.getParam("parent");
             itemTransaction.onUpdateTransaction(transaction);
         }

@@ -54,7 +54,7 @@ public class ItemTransaction extends BaseView{
 
     public void onUpdateTransaction(Transaction transaction) {
         this.setTransaction(transaction);
-        this.dailyPane.onUpdateTransaction();
+        this.dailyPane.onUpdateTransaction(transaction);
     }
 
     public Transaction getTransaction() {
