@@ -74,34 +74,34 @@ public class InputTransactionPopup extends BaseView {
 
     @FXML
     void onBtnAddClick(ActionEvent event) {
+        Category category = cbCategories.getValue();
+        Integer amount = Integer.valueOf(txtAmount.getText());
+        boolean isValidInput = true;
+        if (category == null) {
+            lbWarningCategory.setVisible(true);
+            isValidInput = false;
+        }
+        if (txtAmount.getText().equals("")) {
+            lbWarningAmount.setVisible(true);
+            isValidInput = false;
+        }
+        if (!isValidInput) return;
+        Transaction transaction = new Transaction();
+        transaction.setAmount(amount);
+        transaction.setCategory(category);
+        transaction.setTime(Date.valueOf(dpTime.getValue()));
+        transaction.setNote(txtNote.getText());
         if(btnAdd.getText().equals("Thêm")) {
-            Category category = cbCategories.getValue();
-            boolean isValidInput = true;
-            if (category == null) {
-                lbWarningCategory.setVisible(true);
-                isValidInput = false;
-            }
-            if (txtAmount.getText().equals("")) {
-                lbWarningAmount.setVisible(true);
-                isValidInput = false;
-            }
-            if (!isValidInput) return;
-            Integer amount = Integer.valueOf(txtAmount.getText());
-            Transaction transaction = new Transaction();
-            transaction.setAmount(amount);
-            transaction.setCategory(category);
-            transaction.setTime(Date.valueOf(dpTime.getValue()));
-            transaction.setNote(txtNote.getText());
             DailyPane dailyPane = (DailyPane) this.getParam("parent");
             dailyPane.onAddTransaction(transaction);
         }
         //Change Transaction :
         if(btnAdd.getText().equals("Sửa")) {
-            fixTransaction();
+            transaction.setId(this.transaction.getId());
             TransactionController transactionController = new TransactionController();
-            transactionController.update(this.transaction);
+            transactionController.update(transaction);
             ItemTransaction itemTransaction = (ItemTransaction) this.getParam("parent");
-            itemTransaction.setTransaction(this.transaction);
+            itemTransaction.onUpdateTransaction(transaction);
         }
         closeScene(event);
 
@@ -171,10 +171,4 @@ public class InputTransactionPopup extends BaseView {
         this.transaction = transaction;
     }
 
-    public void fixTransaction(){
-        this.transaction.setTime(Date.valueOf(dpTime.getValue()));
-        this.transaction.setCategory(cbCategories.getValue());
-        this.transaction.setAmount(Integer.valueOf(txtAmount.getText()));
-        this.transaction.setNote(txtNote.getText());
-    }
 }

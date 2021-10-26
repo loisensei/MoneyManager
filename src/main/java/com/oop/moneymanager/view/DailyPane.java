@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 public class DailyPane extends BasePane{
     private TransactionController transactionController;
     private final ObservableList<String> listKindOfTime = FXCollections.observableArrayList();
+
     @FXML
     private JFXComboBox<String> cbKindOfTime;
 
@@ -77,6 +78,10 @@ public class DailyPane extends BasePane{
         loadTransactions();
     }
 
+    public void onUpdateTransaction(){
+        homeScene.updateBalance();
+    }
+
     public void loadTransactions(){
         if(this.transactionController != null) {
             lvTransactions.getItems().clear();
@@ -90,7 +95,7 @@ public class DailyPane extends BasePane{
                 }
                 ItemTransaction item = fxmlLoader.getController();
                 item.setTransaction(transaction);
-
+                item.setDailyPane(this);
 
             }
         }

@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 
 public class ItemTransaction extends BaseView{
     private Transaction transaction;
+    private DailyPane dailyPane;
 
     @FXML
     private Label lbAmount;
@@ -50,8 +51,18 @@ public class ItemTransaction extends BaseView{
             lbNote.setText(transaction.getNote());
         }
     }
+
+    public void onUpdateTransaction(Transaction transaction) {
+        this.setTransaction(transaction);
+        this.dailyPane.onUpdateTransaction();
+    }
+
     public Transaction getTransaction() {
         return this.transaction;
+    }
+
+    public void setDailyPane(DailyPane dailyPane){
+        this.dailyPane = dailyPane;
     }
 
     @Override
