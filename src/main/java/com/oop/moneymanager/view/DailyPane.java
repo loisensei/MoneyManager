@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -52,18 +53,22 @@ public class DailyPane extends BasePane{
             case "All" -> {
                 this.setRangeTime(AppConst.RANGE_TIME.ALL);
                 hbTime.setVisible(false);
+                loadTransactions();
             }
             case "Day" -> {
                 this.setRangeTime(AppConst.RANGE_TIME.DAY);
                 hbTime.setVisible(true);
+                loadTransactions();
             }
             case "Month" -> {
                 this.setRangeTime(AppConst.RANGE_TIME.MONTH);
                 hbTime.setVisible(true);
+                loadTransactions();
             }
             case "Year" -> {
                 this.setRangeTime(AppConst.RANGE_TIME.YEAR);
                 hbTime.setVisible(true);
+                loadTransactions();
             }
         }
     }
@@ -78,6 +83,7 @@ public class DailyPane extends BasePane{
         if (this.currentTime == null) return;
         this.currentTime = TimeUtils.previousTimeWithRange(this.currentTime,this.rangeTime);
         this.reloadTxtTime();
+        loadTransactions();
     }
 
     @FXML
@@ -85,6 +91,7 @@ public class DailyPane extends BasePane{
         if (this.currentTime == null) return;
         this.currentTime = TimeUtils.nextTimeWithRange(this.currentTime,this.rangeTime);
         this.reloadTxtTime();
+        loadTransactions();
     }
 
 
@@ -95,6 +102,7 @@ public class DailyPane extends BasePane{
         cbKindOfTime.setItems(listKindOfTime);
         this.setRangeTime(AppConst.RANGE_TIME.ALL);
         hbTime.setVisible(false);
+        cbKindOfTime.getSelectionModel().select("All");
     }
 
     @Override
@@ -121,7 +129,8 @@ public class DailyPane extends BasePane{
     public void loadTransactions(){
         if(this.transactionController != null) {
             lvTransactions.getItems().clear();
-            List<Transaction> transactions = transactionController.getAll();
+            List<Transaction> transactions = listTransactionsFilter(transactionController.getAll());
+
             for (Transaction transaction : transactions) {
                 FXMLLoader fxmlLoader = new FXMLLoader(DailyPane.class.getResource("ItemTransaction.fxml"));
                 try {
@@ -154,5 +163,30 @@ public class DailyPane extends BasePane{
             case ALL -> "";
         };
         this.lbDateView.setText(s);
+    }
+
+    public List<Transaction> listTransactionsFilter(List<Transaction> transactions){
+        List<Transaction> list = new ArrayList<Transaction>();
+        for(Transaction transaction : transactions){
+            LocalDate time = transaction.getTime().toLocalDate();
+            if(this.rangeTime.equals(AppConst.RANGE_TIME.ALL)){
+                return transactions;
+            }else if(this.rangeTime.equals(AppConst.RANGE_TIME.DAY)){
+                if(this.currentTime.equals(time)){
+                    list.add(transaction);
+                }
+            }else if(this.rangeTime.equals(AppConst.RANGE_TIME.MONTH)){
+                if(this.currentTime.getMonth().equals(time.getMonth())){
+                    if(this.currentTime.getYear()== time.getYear()){
+                        list.add(transaction);
+                    }
+                }
+            }else if(this.rangeTime.equals(AppConst.RANGE_TIME.YEAR)){
+                if(this.currentTime.getYear()== time.getYear()){
+                    list.add(transaction);
+                }
+            }
+        }
+        return list;
     }
 }
