@@ -133,7 +133,7 @@ public class DailyPane extends BasePane{
     public void loadTransactions(){
         if(this.transactionController != null) {
             lvTransactions.getItems().clear();
-            List<Transaction> transactions = listTransactionsFilter(transactionController.getAll());
+            List<Transaction> transactions = this.transactionController.listTransactionsFilter(this.rangeTime,this.currentTime);
 
             for (Transaction transaction : transactions) {
                 FXMLLoader fxmlLoader = new FXMLLoader(DailyPane.class.getResource("ItemTransaction.fxml"));
@@ -169,28 +169,5 @@ public class DailyPane extends BasePane{
         this.lbDateView.setText(s);
     }
 
-    public List<Transaction> listTransactionsFilter(List<Transaction> transactions){
-        List<Transaction> list = new ArrayList<Transaction>();
-        for(Transaction transaction : transactions){
-            LocalDate time = transaction.getTime().toLocalDate();
-            if(this.rangeTime.equals(AppConst.RANGE_TIME.ALL)){
-                return transactions;
-            }else if(this.rangeTime.equals(AppConst.RANGE_TIME.DAY)){
-                if(this.currentTime.equals(time)){
-                    list.add(transaction);
-                }
-            }else if(this.rangeTime.equals(AppConst.RANGE_TIME.MONTH)){
-                if(this.currentTime.getMonth().equals(time.getMonth())){
-                    if(this.currentTime.getYear()== time.getYear()){
-                        list.add(transaction);
-                    }
-                }
-            }else if(this.rangeTime.equals(AppConst.RANGE_TIME.YEAR)){
-                if(this.currentTime.getYear()== time.getYear()){
-                    list.add(transaction);
-                }
-            }
-        }
-        return list;
-    }
+
 }

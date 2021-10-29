@@ -8,6 +8,7 @@ import com.oop.moneymanager.model.dao.ITransactionDAO;
 import com.oop.moneymanager.model.dao.MysqlImp.TransactionDAO;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionController {
@@ -52,5 +53,29 @@ public class TransactionController {
     public List<Transaction> getByRangeTime(LocalDate startTime, LocalDate endTime){
 
         return null;
+    }
+    public List<Transaction> listTransactionsFilter(AppConst.RANGE_TIME rangeTime,LocalDate currentTime){
+        List<Transaction> list = new ArrayList<Transaction>();
+        for(Transaction transaction : transactions){
+            LocalDate time = transaction.getTime().toLocalDate();
+            if(rangeTime.equals(AppConst.RANGE_TIME.ALL)){
+                return transactions;
+            }else if(rangeTime.equals(AppConst.RANGE_TIME.DAY)){
+                if(currentTime.equals(time)){
+                    list.add(transaction);
+                }
+            }else if(rangeTime.equals(AppConst.RANGE_TIME.MONTH)){
+                if(currentTime.getMonth().equals(time.getMonth())){
+                    if(currentTime.getYear()== time.getYear()){
+                        list.add(transaction);
+                    }
+                }
+            }else if(rangeTime.equals(AppConst.RANGE_TIME.YEAR)){
+                if(currentTime.getYear()== time.getYear()){
+                    list.add(transaction);
+                }
+            }
+        }
+        return list;
     }
 }
