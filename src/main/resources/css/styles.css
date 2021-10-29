@@ -83,3 +83,11 @@
 .txt-transparent{
     -fx-background-color: transparent;
 }
+
+.blue-button{
+    -fx-background-color: transparent;
+}
+
+.blue-button:hover{
+    -fx-background-color: #56C8FF;
+}

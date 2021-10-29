@@ -125,7 +125,11 @@ public class DailyPane extends BasePane{
         homeScene.updateBalance();
         this.transactionController.update(transaction);
     }
-
+    public void onDeleteTransaction(Transaction transaction){
+        this.transactionController.delete(transaction);
+        homeScene.updateBalance();
+        loadTransactions();
+    }
     public void loadTransactions(){
         if(this.transactionController != null) {
             lvTransactions.getItems().clear();

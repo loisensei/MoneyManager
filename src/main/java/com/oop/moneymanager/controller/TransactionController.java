@@ -37,7 +37,11 @@ public class TransactionController {
         transactionDAO.save(transaction);
         this.transactions.add(transaction);
     }
-
+    public void delete(Transaction transaction){
+        transaction.setAccount(this.account);
+        transactionDAO.delete(transaction);
+        this.transactions.remove(transaction);
+    }
     public void update(Transaction transaction){
         transaction.setAccount(this.account);
         transactionDAO.update(transaction);

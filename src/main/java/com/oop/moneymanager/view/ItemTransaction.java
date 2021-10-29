@@ -34,6 +34,7 @@ public class ItemTransaction extends BaseView{
         Scene scene = (Scene) inputTransactionPopup.getParam("scene");
         Stage stage = (Stage) scene.getWindow();
         stage.setTitle("Chỉnh sửa");
+        inputTransactionPopup.setBtnDeleteTransaction();
         inputTransactionPopup.setData(this.transaction);
     }
     
@@ -51,7 +52,9 @@ public class ItemTransaction extends BaseView{
             lbNote.setText(transaction.getNote());
         }
     }
-
+    public void onDeleteTransaction(){
+        this.dailyPane.onDeleteTransaction(this.transaction);
+    }
     public void onUpdateTransaction(Transaction transaction) {
         this.setTransaction(transaction);
         this.dailyPane.onUpdateTransaction(transaction);

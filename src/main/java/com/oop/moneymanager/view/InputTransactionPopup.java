@@ -39,7 +39,8 @@ public class InputTransactionPopup extends BaseView {
     private Label lbWarningCategory;
     @FXML
     private JFXButton btnAdd;
-
+    @FXML
+    private JFXButton btnDelete;
     @FXML
     private JFXButton btnExpense;
 
@@ -171,5 +172,13 @@ public class InputTransactionPopup extends BaseView {
         txtNote.setText(transaction.getNote());
         this.transaction = transaction;
     }
-
+    @FXML
+    void onBtnDeleteTransactionClick(ActionEvent event) {
+        ItemTransaction itemTransaction = (ItemTransaction) this.getParam("parent");
+        itemTransaction.onDeleteTransaction();
+        closeScene(event);
+    }
+    public void setBtnDeleteTransaction(){
+        this.btnDelete.setVisible(true);
+    }
 }

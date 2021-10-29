@@ -69,7 +69,7 @@
             <children>
                <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="750.0" stylesheets="@../../../../css/styles.css">
                   <children>
-                     <VBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="95.0">
+                     <VBox alignment="CENTER" prefHeight="75.0" prefWidth="100.0" styleClass="blue-button">
                         <children>
                            <Label fx:id="lbTime" text="Ngày">
                               <font>
@@ -81,7 +81,7 @@
                            </Label>
                         </children>
                      </VBox>
-                     <VBox alignment="CENTER" prefHeight="75.0" prefWidth="105.0">
+                     <VBox alignment="CENTER" prefHeight="75.0" prefWidth="160.0" styleClass="blue-button">
                         <children>
                            <Label fx:id="lbCategory" text="Thể Loại">
                               <font>
@@ -90,7 +90,7 @@
                            </Label>
                         </children>
                      </VBox>
-                     <VBox alignment="CENTER" prefHeight="62.0" prefWidth="119.0">
+                     <VBox alignment="CENTER" prefHeight="62.0" prefWidth="100.0" styleClass="blue-button">
                         <children>
                            <Label fx:id="lbAmount" text="Số tiền" textFill="#2c2b30">
                               <font>
@@ -99,7 +99,7 @@
                            </Label>
                         </children>
                      </VBox>
-                     <VBox alignment="CENTER" prefHeight="62.0" prefWidth="425.0">
+                     <VBox alignment="CENTER" prefHeight="62.0" prefWidth="380.0">
                         <children>
                            <Label fx:id="lbNote" text="Ghi chú" textFill="#252426">
                               <font>
