@@ -10,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class ItemTransaction extends BaseView{
@@ -47,7 +49,7 @@ public class ItemTransaction extends BaseView{
             lbAmount.setStyle("-fx-text-fill: red");
         }
         lbCategory.setText(transaction.getCategory().toString());
-        lbTime.setText(transaction.getTime().toString());
+        lbTime.setText(transaction.getTime().toLocalDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         if(transaction.getNote() != null) {
             lbNote.setText(transaction.getNote());
         }

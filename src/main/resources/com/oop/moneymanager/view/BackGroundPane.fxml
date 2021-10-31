@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.BackGroundPane">
+   <children>
+      <VBox layoutX="380.0" layoutY="128.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="66.0" prefWidth="746.0">
+               <children>
+                  <HBox fx:id="hbTime" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" stylesheets="@../../../../css/styles.css">
+                     <children>
+                        <ImageView fitHeight="34.0" fitWidth="31.0" onMouseClicked="#onClickBackward" pickOnBounds="true" preserveRatio="true" styleClass="left-button">
+                           <image>
+                              <Image url="@../../../../img/back_64px.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lbDateView" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="119.0" text="29/09/2001" textAlignment="CENTER" textFill="#3c53c7">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="39.0" fitWidth="31.0" onMouseClicked="#onClickForward" pickOnBounds="true" preserveRatio="true" styleClass="right-button">
+                           <image>
+                              <Image url="@../../../../img/forward_64px.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </HBox>
+                  <HBox fx:id="btnAddOfDaily" alignment="CENTER" onMouseClicked="#onAddTransactionClick" prefHeight="27.0" prefWidth="172.0" styleClass="button" stylesheets="@../../../../css/styles.css">
+                     <children>
+                        <ImageView fitHeight="41.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../img/add_new_64px.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="77.0" top="10.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <VBox alignment="CENTER" prefHeight="66.0" prefWidth="147.0">
+                     <children>
+                        <JFXComboBox fx:id="cbKindOfTime" onAction="#onActionKindOfTime" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="130.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <Pane prefHeight="529.0" prefWidth="746.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
