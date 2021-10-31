@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.StatisticPane" />
+
+<AnchorPane prefHeight="600.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.StatisticPane">
+   <children>
+      <BorderPane layoutX="237.0" layoutY="214.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Pane fx:id="pnDatePicker" prefHeight="44.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <center>
+                  <PieChart title="Thống kê" BorderPane.alignment="CENTER" />
+               </center>
+               <top>
+                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="746.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <JFXButton prefHeight="26.0" prefWidth="320.0" />
+                        <JFXButton prefHeight="26.0" prefWidth="320.0" />
+                     </children>
+                  </HBox>
+               </top>
+            </BorderPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

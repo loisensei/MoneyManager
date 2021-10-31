@@ -29,80 +29,25 @@ import java.util.ResourceBundle;
 
 public class DailyPane extends BasePane{
     private TransactionController transactionController;
-    private final ObservableList<String> listKindOfTime = FXCollections.observableArrayList();
-    private AppConst.RANGE_TIME rangeTime;
-    private LocalDate currentTime;
+    private DatePickerPane datePickerPane;
+
 
     @FXML
-    private JFXComboBox<String> cbKindOfTime;
-
-    @FXML
-    private Label lbDateView;
+    private Pane pnDatePicker;
 
     @FXML
     private ListView<Pane> lvTransactions;
 
-    @FXML
-    private HBox hbTime;
-
-    @FXML
-    void onActionKindOfTime(ActionEvent event) {
-
-        String s = cbKindOfTime.getValue();
-        switch (s) {
-            case "All" -> {
-                this.setRangeTime(AppConst.RANGE_TIME.ALL);
-                hbTime.setVisible(false);
-                loadTransactions();
-            }
-            case "Day" -> {
-                this.setRangeTime(AppConst.RANGE_TIME.DAY);
-                hbTime.setVisible(true);
-                loadTransactions();
-            }
-            case "Month" -> {
-                this.setRangeTime(AppConst.RANGE_TIME.MONTH);
-                hbTime.setVisible(true);
-                loadTransactions();
-            }
-            case "Year" -> {
-                this.setRangeTime(AppConst.RANGE_TIME.YEAR);
-                hbTime.setVisible(true);
-                loadTransactions();
-            }
-        }
-    }
 
     @FXML
     void onAddTransactionClick(MouseEvent event) {
         InputTransactionPopup addSpendingPopup = (InputTransactionPopup) GuiUtils.openPopup(this,"InputTransactionPopup");
     }
 
-    @FXML
-    void onClickBackward(MouseEvent event) {
-        if (this.currentTime == null) return;
-        this.currentTime = TimeUtils.previousTimeWithRange(this.currentTime,this.rangeTime);
-        this.reloadTxtTime();
-        loadTransactions();
-    }
-
-    @FXML
-    void onClickForward(MouseEvent event) {
-        if (this.currentTime == null) return;
-        this.currentTime = TimeUtils.nextTimeWithRange(this.currentTime,this.rangeTime);
-        this.reloadTxtTime();
-        loadTransactions();
-    }
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.homeScene = (HomeScene) this.getParam("parent");
-        listKindOfTime.addAll("All","Day","Month","Year");
-        cbKindOfTime.setItems(listKindOfTime);
-        this.setRangeTime(AppConst.RANGE_TIME.ALL);
-        hbTime.setVisible(false);
-        cbKindOfTime.getSelectionModel().select("All");
+        this.initDatePickerPane();
     }
 
     @Override
@@ -130,10 +75,13 @@ public class DailyPane extends BasePane{
         homeScene.updateBalance();
         loadTransactions();
     }
+
     public void loadTransactions(){
+        LocalDate currentTime = datePickerPane.getCurrentTime();
+        AppConst.RANGE_TIME rangeTime = datePickerPane.getRangeTime();
         if(this.transactionController != null) {
             lvTransactions.getItems().clear();
-            List<Transaction> transactions = this.transactionController.listTransactionsFilter(this.rangeTime,this.currentTime);
+            List<Transaction> transactions = this.transactionController.listTransactionsFilter(rangeTime,currentTime);
 
             for (Transaction transaction : transactions) {
                 FXMLLoader fxmlLoader = new FXMLLoader(DailyPane.class.getResource("ItemTransaction.fxml"));
@@ -150,24 +98,17 @@ public class DailyPane extends BasePane{
         }
     }
 
-    public void setRangeTime(AppConst.RANGE_TIME rangeTime){
-        this.rangeTime = rangeTime;
-        if (this.currentTime == null){
-            this.currentTime = LocalDate.now();
+    private void initDatePickerPane(){
+        FXMLLoader fxmlLoader = new FXMLLoader(HomeScene.class.getResource("DatePickerPane.fxml"));
+        try {
+            pnDatePicker.getChildren().add(fxmlLoader.load());
+            System.out.println("save dpp");
+            this.datePickerPane = fxmlLoader.getController();
+            System.out.println(this.datePickerPane);
+            this.datePickerPane.setChangeTimeListener(this::loadTransactions);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        Date startTime,endTime;
-        this.reloadTxtTime();
     }
-
-    private void reloadTxtTime(){
-        String s = switch (this.rangeTime) {
-            case DAY -> this.currentTime.toString();
-            case MONTH -> String.valueOf(this.currentTime.getMonth()) + String.valueOf(this.currentTime.getYear());
-            case YEAR -> String.valueOf(this.currentTime.getYear());
-            case ALL -> "";
-        };
-        this.lbDateView.setText(s);
-    }
-
 
 }
