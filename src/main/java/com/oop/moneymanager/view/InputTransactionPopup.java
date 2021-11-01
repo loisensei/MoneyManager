@@ -92,6 +92,7 @@ public class InputTransactionPopup extends BaseView {
         Transaction transaction = new Transaction();
         transaction.setAmount(amount);
         transaction.setCategory(category);
+        System.out.println(Date.valueOf(dpTime.getValue()));
         transaction.setTime(Date.valueOf(dpTime.getValue()));
         transaction.setNote(txtNote.getText());
         if(btnAdd.getText().equals("Thêm")) {

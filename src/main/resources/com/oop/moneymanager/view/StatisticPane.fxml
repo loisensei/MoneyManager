@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.moneymanager.view.StatisticPane">
    <children>
@@ -17,13 +18,25 @@
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <center>
-                  <PieChart title="Thống kê" BorderPane.alignment="CENTER" />
+                  <PieChart fx:id="pcStatistic" title="Thống kê" BorderPane.alignment="CENTER" />
                </center>
                <top>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="746.0" BorderPane.alignment="CENTER">
                      <children>
-                        <JFXButton prefHeight="26.0" prefWidth="320.0" />
-                        <JFXButton prefHeight="26.0" prefWidth="320.0" />
+                        <JFXButton fx:id="btnIncome" onAction="#onBtnIncomeClick" prefHeight="26.0" prefWidth="320.0" text="Thu: 100000000">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin></JFXButton>
+                        <JFXButton fx:id="btnExpense" onAction="#onBtnExpenseClick" prefHeight="26.0" prefWidth="320.0" text="Chi: 1000000000">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin></JFXButton>
                      </children>
                   </HBox>
                </top>

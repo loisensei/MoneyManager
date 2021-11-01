@@ -7,23 +7,14 @@ import com.oop.moneymanager.controller.TransactionController;
 import com.oop.moneymanager.model.Account;
 import com.oop.moneymanager.model.Transaction;
 import com.oop.moneymanager.utils.GuiUtils;
-import com.oop.moneymanager.utils.TimeUtils;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -104,7 +95,6 @@ public class DailyPane extends BasePane{
             pnDatePicker.getChildren().add(fxmlLoader.load());
             System.out.println("save dpp");
             this.datePickerPane = fxmlLoader.getController();
-            System.out.println(this.datePickerPane);
             this.datePickerPane.setChangeTimeListener(this::loadTransactions);
         } catch (IOException e) {
             e.printStackTrace();

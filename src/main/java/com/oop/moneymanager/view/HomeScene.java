@@ -13,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,7 +51,10 @@ public class HomeScene extends BaseView {
 
     @FXML
     void onBtnStatsClick(MouseEvent event) {
-        this.setPane("StatisticPane");
+        if(cbListAccount.getValue() != null) {
+            this.setPane("StatisticPane");
+
+        }
     }
 
     @FXML
