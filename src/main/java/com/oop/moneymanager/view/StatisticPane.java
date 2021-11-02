@@ -1,13 +1,10 @@
 package com.oop.moneymanager.view;
 
-
 import com.jfoenix.controls.JFXButton;
 import com.oop.moneymanager.AppConst;
 import com.oop.moneymanager.controller.CategoryController;
 import com.oop.moneymanager.controller.TransactionController;
 import com.oop.moneymanager.model.Account;
-import com.oop.moneymanager.model.Category;
-import com.oop.moneymanager.model.Transaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -58,7 +55,6 @@ public class StatisticPane extends BasePane{
 
         loadData();
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

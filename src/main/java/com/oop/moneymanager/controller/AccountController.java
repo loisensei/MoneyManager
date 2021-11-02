@@ -37,7 +37,7 @@ public class AccountController {
         List<Transaction> list = transactionDAO.getByAccountId(account.getId());
         Integer balance = account.getInitialBalance();
         for(Transaction transaction : list){
-            Integer amount = transaction.getAmount();
+            int amount = transaction.getAmount();
             Integer type = transaction.getCategory().getType();
             if(type.equals(AppConst.CATEGORY_TYPE.EXPENSE)) amount = -amount;
             balance += amount;

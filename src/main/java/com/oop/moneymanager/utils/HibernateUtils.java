@@ -7,6 +7,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
+import java.util.TimeZone;
+
 public class HibernateUtils {
     static SessionFactory sessionFactory;
 
@@ -19,7 +21,9 @@ public class HibernateUtils {
     }
 
     public static SessionFactory getConnection(){
-        if (sessionFactory == null) HibernateUtils.sessionFactory = HibernateUtils.buildSessionFactory();
+        if (sessionFactory == null) {
+            HibernateUtils.sessionFactory = HibernateUtils.buildSessionFactory();
+        }
         return HibernateUtils.sessionFactory;
     }
 }
