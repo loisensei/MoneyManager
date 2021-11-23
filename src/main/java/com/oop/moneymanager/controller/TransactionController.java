@@ -32,7 +32,9 @@ public class TransactionController {
 
     public void setAccount(Account account){
         this.account = account;
-        this.transactions = transactionDAO.getByAccountId(this.account.getId());
+        if(this.account !=null) {
+            this.transactions = transactionDAO.getByAccountId(this.account.getId());
+        }
     }
 
     public void add(Transaction transaction){

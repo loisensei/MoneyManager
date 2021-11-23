@@ -33,12 +33,12 @@
                               <Font size="13.0" />
                            </font>
                         </Label>
-                        <VBox alignment="CENTER" cache="true" prefHeight="18.0" prefWidth="26.0" stylesheets="@../../../../css/styles.css">
+                        <VBox alignment="CENTER" cache="true" prefHeight="18.0" prefWidth="26.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                            <ImageView fitHeight="29.0" fitWidth="30.0" onMouseClicked="#onBtnAddAccountClick" pickOnBounds="true" preserveRatio="true" styleClass="button">
-                              <Image url="@../../../../img/addd.png" />
+                              <Image url="@../../../../img/pencil_32px.png" />
                            </ImageView>
                         </VBox>
                      </children>

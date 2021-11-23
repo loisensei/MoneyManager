@@ -44,4 +44,8 @@ public class AccountController {
         }
         return balance;
     }
+    public void delete(Account account){
+        this.accountDAO.delete(account);
+
+    }
 }

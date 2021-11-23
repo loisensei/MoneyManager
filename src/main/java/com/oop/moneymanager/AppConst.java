@@ -17,4 +17,8 @@ public class AppConst {
     public static enum RANGE_TIME{
         DAY,MONTH,YEAR,ALL
     }
+    public static class ACCOUNT_MODE{
+        public static Integer ADD = 0;
+        public static Integer DEL = 1;
+    }
 }

@@ -79,6 +79,15 @@ public class HomeScene extends BaseView {
         cbListAccount.setItems(list);
     }
 
+    public void actionDelAccount(Account account){
+        if(cbListAccount.getValue().equals(account)){
+            panelView.getChildren().clear();
+            initListAccount();
+            lbBalance.setText("0d");
+            this.currentPane = null;
+        }
+    }
+
     public void onAddNewAccount(Account account){
         this.accountController.insert(account);
         this.initListAccount();
