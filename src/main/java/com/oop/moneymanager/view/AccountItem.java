@@ -30,7 +30,6 @@ public class AccountItem extends BaseView{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
     public void init(){
         lbAccount.setText(account.getName());

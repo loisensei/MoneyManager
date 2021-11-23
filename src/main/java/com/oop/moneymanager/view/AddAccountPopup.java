@@ -93,7 +93,9 @@ public class AddAccountPopup extends BaseView{
     public void initialize(URL location, ResourceBundle resources) {
         GuiUtils.addNumericInputListener(this.txtBalance);
         System.out.println("alo");
+        this.lvAccount.setStyle("-fx-selection-bar: white");
         setMode(AppConst.ACCOUNT_MODE.ADD);
+
     }
 
     private void setMode(Integer mode){
