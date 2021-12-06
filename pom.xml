@@ -55,7 +55,6 @@
             <version>1.18.22</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>

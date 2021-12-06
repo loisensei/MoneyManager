@@ -6,7 +6,6 @@ import com.oop.moneymanager.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import javax.persistence.Query;
 import java.util.List;
 
 public class AccountDAO implements IAccountDAO {

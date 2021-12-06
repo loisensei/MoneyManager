@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.oop.moneymanager.AppConst;
 import com.oop.moneymanager.controller.CategoryController;
-import com.oop.moneymanager.controller.TransactionController;
 import com.oop.moneymanager.model.Category;
 import com.oop.moneymanager.model.Transaction;
 import com.oop.moneymanager.utils.GuiUtils;

@@ -63,6 +63,7 @@ public class AddAccountPopup extends BaseView{
             lbMesseger.setText("Account already exists!");
         }else{
             if(isValidInput()) {
+                if(txtBalance.getText().equals("")) txtBalance.setText("0");
                 Account account = new Account(txtAccountName.getText().trim(),Integer.parseInt(txtBalance.getText()));
                 hs.onAddNewAccount(account);
                 closeScene(event);
@@ -85,7 +86,7 @@ public class AddAccountPopup extends BaseView{
     }
 
     Boolean isValidInput(){
-        return StringUtils.isValidAccountName(txtAccountName.getText()) && StringUtils.isValidBalance(txtBalance.getText());
+        return StringUtils.isValidAccountName(txtAccountName.getText()) && StringUtils.isValidBalanceAddAccount(txtBalance.getText());
     }
 
     @Override
